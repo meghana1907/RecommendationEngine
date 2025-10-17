@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Test Recommendations - Demo</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useMemo } = React;
+        const { 
+            ChevronDown, 
+            ChevronUp, 
+            Target, 
+            Shield, 
+            Zap, 
+            Users, 
+            Code, 
+            BarChart3,
+            Search,
+            Brain,
+            Layers,
+            FileText,
+            GitBranch,
+            Activity,
+            Database
+        } = lucide;
+
+        // Sample test data based on Subscription Management BRD/User Stories
+        const sampleRecommendations = [
+            {
+                cluster_id: 0,
+                feature_name: "Cluster 0: Subscription Management, Organization Selection, Charger Management",
+                cluster_info: {
+                    representative_text: "Content focused on: Subscription Management, Organization Selection, Charger Management - CNO creates subscriptions for CSOs, validates chargers, prevents duplicate assignments, ensures business rules compliance.",
+                    size: 20,
+                    functional_areas: ["Subscription Management", "Organization Selection", "Charger Management"],
+                    technical_components: ["Web Portal", "Database", "Authentication System"],
+                    risk_areas: ["Financial Transaction Risk", "Data Privacy Risk"]
+                },
+                tests: [
+                    // Standard Tests (Must-haves for MVP/UAT)
+                    {
+                        test_name: "Smoke Testing",
+                        test_description: "Verify core user flows for Subscription Management, Organization Selection",
+                        test_category: "functional",
+                        test_classification: "STANDARD",
+                        priority: "critical",
+                        estimated_effort: "2-4 hours",
+                        rationale: "Essential validation of core workflows identified in cluster content"
+                    },
+                    {
+                        test_name: "Functional Testing",
+                        test_description: "Validate Subscription Management, Organization Selection, Charger Management functionality",
+                        test_category: "functional",
+                        test_classification: "STANDARD",
+                        priority: "high",
+                        estimated_effort: "1-2 days",
+                        rationale: "Core functional areas identified: Subscription Management, Organization Selection, Charger Management"
+                    },
+                    {
+                        test_name: "Role-Based Access Testing",
+                        test_description: "Validate access control across different user roles (CNO, CSO, Reseller)",
+                        test_category: "security",
+                        test_classification: "STANDARD",
+                        priority: "high",
+                        estimated_effort: "1-2 days",
+                        rationale: "Authentication system and role-based access identified in cluster"
+                    },
+                    {
+                        test_name: "CSO Organization Selection Validation",
+                        test_description: "Ensure only CSO-type organizations can be selected for subscription creation",
+                        test_category: "functional",
+                        test_classification: "STANDARD",
+                        priority: "high",
+                        estimated_effort: "4-6 hours",
+                        rationale: "Business rule BR-03: Only CSO organizations allowed for subscriptions"
+                    },
+                    {
+                        test_name: "Charger Duplicate Assignment Prevention",
+                        test_description: "Verify system prevents chargers from being assigned to multiple Active/Pending subscriptions",
+                        test_category: "functional",
+                        test_classification: "STANDARD",
+                        priority: "critical",
+                        estimated_effort: "1-2 days",
+                        rationale: "Business rule BR-01: No charger can be in multiple active subscriptions"
+                    },
+                    {
+                        test_name: "Operational Charger Validation",
+                        test_description: "Test that only Operational chargers can be selected (exclude Decommissioned/Uncommissioned)",
+                        test_category: "functional",
+                        test_classification: "STANDARD",
+                        priority: "high",
+                        estimated_effort: "6-8 hours",
+                        rationale: "Business rule BR-02: Only operational chargers allowed in subscriptions"
+                    },
+                    // Recommended Tests (Advanced/Post-MVP)
+                    {
+                        test_name: "Advanced Security Testing",
+                        test_description: "PCI DSS compliance, encryption validation, and security audit testing for subscription data",
+                        test_category: "security",
+                        test_classification: "RECOMMENDED",
+                        priority: "high",
+                        estimated_effort: "3-5 days",
+                        rationale: "Security requirements and compliance needs identified in cluster"
+                    },
+                    {
+                        test_name: "Concurrency Testing",
+                        test_description: "Test multiple CNOs creating subscriptions simultaneously for same chargers",
+                        test_category: "performance",
+                        test_classification: "RECOMMENDED",
+                        priority: "medium",
+                        estimated_effort: "2-4 days",
+                        rationale: "Multi-user concurrent access patterns identified in cluster"
+                    },
+                    {
+                        test_name: "Accessibility Compliance Testing",
+                        test_description: "WCAG 2.1 validation including screen reader, color contrast, keyboard navigation for subscription portal",
+                        test_category: "usability",
+                        test_classification: "RECOMMENDED",
+                        priority: "medium",
+                        estimated_effort: "2-3 days",
+                        rationale: "User interface components requiring accessibility compliance identified"
+                    }
+                ]
+            },
+            {
+                cluster_id: 1,
+                feature_name: "Cluster 1: Payment Processing, Invoicing, Reseller Validation",
+                cluster_info: {
+                    representative_text: "Content focused on: Payment Processing, Invoicing, Reseller Validation - Automated invoice generation, payment tracking, reseller billing contact validation, financial transaction handling.",
+                    size: 12,
+                    functional_areas: ["Payment Processing", "Invoicing", "Reseller Validation"],
+                    technical_components: ["Payment Gateway", "Email Service", "Database"],
+                    risk_areas: ["Financial Transaction Risk", "Integration Risk"]
+                },
+                tests: [
+                    // Standard Tests (Must-haves for MVP/UAT)
+                    {
+                        test_name: "Payment Workflow Testing",
+                        test_description: "Ensure billing, invoice generation, and transaction handling work correctly for subscriptions",
+                        test_category: "functional",
+                        test_classification: "STANDARD",
+                        priority: "critical",
+                        estimated_effort: "2-3 days",
+                        rationale: "Payment processing and billing workflows identified in cluster"
+                    },
+                    {
+                        test_name: "Reseller Validation Testing",
+                        test_description: "Verify CSO must have valid reseller with billing contact before subscription creation",
+                        test_category: "functional",
+                        test_classification: "STANDARD",
+                        priority: "high",
+                        estimated_effort: "1-2 days",
+                        rationale: "Business rule BR-03: Subscription requires valid reseller and billing contact"
+                    },
+                    {
+                        test_name: "Invoice Generation Testing",
+                        test_description: "Test automatic invoice creation upon subscription submission with correct data and email delivery",
+                        test_category: "functional",
+                        test_classification: "STANDARD",
+                        priority: "high",
+                        estimated_effort: "1-2 days",
+                        rationale: "Automated invoicing workflow identified as core functionality"
+                    },
+                    {
+                        test_name: "Payment Status Updates",
+                        test_description: "Verify status changes from Pending to Paid upon payment receipt with confirmation emails",
+                        test_category: "functional",
+                        test_classification: "STANDARD",
+                        priority: "high",
+                        estimated_effort: "1-2 days",
+                        rationale: "Payment tracking and status management identified as essential"
+                    },
+                    // Recommended Tests (Advanced/Post-MVP)
+                    {
+                        test_name: "Payment Security Testing",
+                        test_description: "PCI DSS compliance, encryption validation, secure payment data handling and audit trails",
+                        test_category: "security",
+                        test_classification: "RECOMMENDED",
+                        priority: "high",
+                        estimated_effort: "3-5 days",
+                        rationale: "Financial transaction security requirements identified"
+                    },
+                    {
+                        test_name: "API Contract Testing",
+                        test_description: "Enforce strict schemas and backward compatibility for payment gateway integration APIs",
+                        test_category: "api",
+                        test_classification: "RECOMMENDED",
+                        priority: "medium",
+                        estimated_effort: "1-2 days",
+                        rationale: "External payment gateway integration points requiring contract validation identified"
+                    },
+                    {
+                        test_name: "Financial Analytics Testing",
+                        test_description: "Validate subscription revenue tracking, payment analytics, and financial reporting accuracy",
+                        test_category: "data",
+                        test_classification: "RECOMMENDED",
+                        priority: "low",
+                        estimated_effort: "2-3 days",
+                        rationale: "Financial data analysis and reporting capabilities for business insights"
+                    }
+                ]
+            }
+        ];
+
+        const EnhancedTestRecommendation = ({ recommendations, debugMode = false }) => {
+            const [expandedClusters, setExpandedClusters] = useState({});
+            const [showClusterDetails, setShowClusterDetails] = useState(false);
+            const [searchTerm, setSearchTerm] = useState('');
+            const [viewMode, setViewMode] = useState('cluster');
+
+            // Process recommendations to extract cluster information
+            const processedData = useMemo(() => {
+                if (!recommendations || !recommendations.length) return { clusters: [], totalTests: 0, testsByCluster: {} };
+
+                let allTests = [];
+                let testsByCluster = {};
+                let clusterInfo = [];
+
+                recommendations.forEach((rec, index) => {
+                    const clusterId = rec.cluster_id !== undefined ? rec.cluster_id : index;
+                    const clusterInfo_data = rec.cluster_info || {};
+                    
+                    // Collect cluster information
+                    clusterInfo.push({
+                        id: clusterId,
+                        representative_text: clusterInfo_data.representative_text || rec.feature_name || 'No description available',
+                        size: clusterInfo_data.size || rec.tests?.length || 0,
+                        centroid: clusterInfo_data.centroid || [],
+                        test_coverage: rec.test_coverage || {},
+                        total_tests: rec.tests?.length || 0
+                    });
+
+                    // Process tests from this cluster
+                    if (rec.tests) {
+                        rec.tests.forEach(test => {
+                            const testWithCluster = {
+                                ...test,
+                                cluster_id: clusterId,
+                                cluster_source: `Cluster ${clusterId}`,
+                                cluster_description: clusterInfo_data.representative_text?.substring(0, 100) + '...' || rec.feature_name || 'No description'
+                            };
+                            allTests.push(testWithCluster);
+                        });
+                        
+                        testsByCluster[clusterId] = rec.tests;
+                    }
+                });
+
+                return {
+                    clusters: clusterInfo,
+                    totalTests: allTests.length,
+                    testsByCluster,
+                    allTests
+                };
+            }, [recommendations]);
+
+            const { clusters, totalTests, testsByCluster, allTests } = processedData;
+
+            // Filter tests based on search term
+            const filteredTests = useMemo(() => {
+                if (!searchTerm) return allTests;
+                return allTests.filter(test => 
+                    test.test_name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    test.test_description?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    test.test_category?.toLowerCase().includes(searchTerm.toLowerCase())
+                );
+            }, [allTests, searchTerm]);
+
+            const toggleClusterExpansion = (clusterId) => {
+                setExpandedClusters(prev => ({
+                    ...prev,
+                    [clusterId]: !prev[clusterId]
+                }));
+            };
+
+            const getCategoryIcon = (category) => {
+                const icons = {
+                    functional: Target,
+                    security: Shield,
+                    performance: Zap,
+                    usability: Users,
+                    api: Code,
+                    integration: BarChart3,
+                    data: Database,
+                    domain_specific: GitBranch,
+                    compatibility: Activity,
+                    non_functional: Layers
+                };
+                return icons[category?.toLowerCase()] || Target;
+            };
+
+            const getCategoryStyles = (category) => {
+                const styles = {
+                    functional: { bg: 'bg-blue-100', text: 'text-blue-600' },
+                    security: { bg: 'bg-red-100', text: 'text-red-600' },
+                    performance: { bg: 'bg-green-100', text: 'text-green-600' },
+                    usability: { bg: 'bg-purple-100', text: 'text-purple-600' },
+                    api: { bg: 'bg-indigo-100', text: 'text-indigo-600' },
+                    integration: { bg: 'bg-pink-100', text: 'text-pink-600' },
+                    data: { bg: 'bg-yellow-100', text: 'text-yellow-600' },
+                    domain_specific: { bg: 'bg-orange-100', text: 'text-orange-600' },
+                    compatibility: { bg: 'bg-teal-100', text: 'text-teal-600' },
+                    non_functional: { bg: 'bg-gray-100', text: 'text-gray-600' }
+                };
+                return styles[category?.toLowerCase()] || styles.non_functional;
+            };
+
+            const getPriorityColor = (priority) => {
+                const colors = {
+                    critical: 'bg-red-100 text-red-800 border-red-200',
+                    high: 'bg-orange-100 text-orange-800 border-orange-200',
+                    medium: 'bg-yellow-100 text-yellow-800 border-yellow-200',
+                    low: 'bg-gray-100 text-gray-800 border-gray-200'
+                };
+                return colors[priority?.toLowerCase()] || 'bg-gray-100 text-gray-800 border-gray-200';
+            };
+
+            const renderClusterView = () => (
+                React.createElement('div', { className: "space-y-6" },
+                    // Cluster Overview
+                    React.createElement('div', { className: "bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 border border-blue-100" },
+                        React.createElement('div', { className: "flex items-center justify-between mb-4" },
+                            React.createElement('div', { className: "flex items-center space-x-3" },
+                                React.createElement('div', { className: "bg-blue-100 rounded-lg p-2" },
+                                    React.createElement(Layers, { className: "w-6 h-6 text-blue-600" })
+                                ),
+                                React.createElement('div', null,
+                                    React.createElement('h2', { className: "text-xl font-semibold text-gray-900" }, "Cluster Analysis Results"),
+                                    React.createElement('p', { className: "text-gray-600" }, `Content organized into ${clusters.length} distinct clusters`)
+                                )
+                            ),
+                            React.createElement('button', {
+                                onClick: () => setShowClusterDetails(!showClusterDetails),
+                                className: "flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                            },
+                                React.createElement(Brain, { className: "w-4 h-4 mr-2" }),
+                                showClusterDetails ? 'Hide' : 'Show', ' Cluster Details'
+                            )
+                        ),
+
+                        // Cluster Summary Cards
+                        React.createElement('div', { className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" },
+                            clusters.map((cluster) => 
+                                React.createElement('div', {
+                                    key: cluster.id,
+                                    className: "bg-white rounded-lg p-4 border border-gray-200 hover:border-blue-300 transition-colors cursor-pointer",
+                                    onClick: () => setSelectedCluster(cluster.id)
+                                },
+                                    React.createElement('div', { className: "flex items-center justify-between mb-2" },
+                                        React.createElement('span', { className: "text-lg font-semibold text-blue-600" }, `Cluster ${cluster.id}`),
+                                        React.createElement('span', { className: "bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-sm" }, 
+                                            `${cluster.total_tests} tests`
+                                        )
+                                    ),
+                                    React.createElement('p', { className: "text-sm text-gray-600 line-clamp-2" }, cluster.representative_text),
+                                    React.createElement('div', { className: "mt-2 text-xs text-gray-500" }, `Content chunks: ${cluster.size}`)
+                                )
+                            )
+                        )
+                    ),
+
+                    // Cluster Details Panel
+                    showClusterDetails && React.createElement('div', { className: "bg-white rounded-lg border border-gray-200 p-6" },
+                        React.createElement('h3', { className: "text-lg font-semibold text-gray-900 mb-4 flex items-center" },
+                            React.createElement(Activity, { className: "w-5 h-5 mr-2 text-blue-600" }),
+                            "Clustering Process Details"
+                        ),
+                        
+                        React.createElement('div', { className: "grid grid-cols-1 lg:grid-cols-2 gap-6" },
+                            React.createElement('div', null,
+                                React.createElement('h4', { className: "font-medium text-gray-800 mb-3" }, "Cluster Information"),
+                                React.createElement('div', { className: "space-y-3" },
+                                    clusters.map((cluster) => 
+                                        React.createElement('div', { key: cluster.id, className: "border border-gray-200 rounded-lg p-3" },
+                                            React.createElement('div', { className: "flex items-center justify-between mb-2" },
+                                                React.createElement('span', { className: "font-medium text-gray-800" }, `Cluster ${cluster.id}`),
+                                                React.createElement('span', { className: "text-sm text-gray-600" }, `${cluster.size} chunks`)
+                                            ),
+                                            React.createElement('p', { className: "text-sm text-gray-600 mb-2" }, cluster.representative_text),
+                                            React.createElement('div', { className: "text-xs text-gray-500" }, `Generated ${cluster.total_tests} test recommendations`)
+                                        )
+                                    )
+                                )
+                            ),
+                            
+                            React.createElement('div', null,
+                                React.createElement('h4', { className: "font-medium text-gray-800 mb-3" }, "Processing Pipeline"),
+                                React.createElement('div', { className: "space-y-2 text-sm" },
+                                    [
+                                        "Document uploaded and processed",
+                                        "Content chunked into semantic segments", 
+                                        "Embeddings generated for each chunk",
+                                        `K-means clustering applied (${clusters.length} clusters)`,
+                                        "Comprehensive test engine analyzed each cluster",
+                                        `Generated ${totalTests} tailored test recommendations`
+                                    ].map((step, index) =>
+                                        React.createElement('div', { key: index, className: "flex items-center space-x-2" },
+                                            React.createElement('div', { className: "w-2 h-2 bg-green-500 rounded-full" }),
+                                            React.createElement('span', null, step)
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    ),
+
+                    // Tests by Cluster
+                    React.createElement('div', { className: "space-y-4" },
+                        clusters.map((cluster) => 
+                            React.createElement('div', { key: cluster.id, className: "bg-white rounded-lg border border-gray-200 shadow-sm" },
+                                React.createElement('div', {
+                                    className: "flex items-center justify-between p-4 cursor-pointer hover:bg-gray-50 transition-colors",
+                                    onClick: () => toggleClusterExpansion(cluster.id)
+                                },
+                                    React.createElement('div', { className: "flex items-center space-x-4" },
+                                        React.createElement('div', { className: "bg-blue-100 rounded-lg p-3 flex items-center justify-center" },
+                                            React.createElement('span', { className: "text-blue-600 font-bold text-lg" }, `C${cluster.id}`)
+                                        ),
+                                        React.createElement('div', null,
+                                            React.createElement('h3', { className: "text-lg font-semibold text-gray-900" }, `Cluster ${cluster.id} Tests`),
+                                            React.createElement('p', { className: "text-sm text-gray-600" }, `${cluster.total_tests} tests • ${cluster.size} content chunks`),
+                                            React.createElement('p', { className: "text-xs text-gray-500 mt-1 max-w-md truncate" }, cluster.representative_text)
+                                        )
+                                    ),
+                                    React.createElement('div', { className: "flex items-center space-x-2" },
+                                        React.createElement('span', { className: "bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium" }, 
+                                            `${cluster.total_tests} tests`
+                                        ),
+                                        React.createElement(expandedClusters[cluster.id] ? ChevronUp : ChevronDown, { className: "w-5 h-5 text-gray-400" })
+                                    )
+                                ),
+
+                                expandedClusters[cluster.id] && React.createElement('div', { className: "border-t border-gray-200 p-4" },
+                                    React.createElement('div', { className: "space-y-3" },
+                                        testsByCluster[cluster.id]?.map((test, testIndex) => 
+                                            React.createElement(TestCard, {
+                                                key: testIndex,
+                                                test: test,
+                                                clusterId: cluster.id,
+                                                clusterDescription: cluster.representative_text,
+                                                showClusterInfo: true
+                                            })
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    )
+                )
+            );
+
+            if (!recommendations || recommendations.length === 0) {
+                return React.createElement('div', { className: "text-center py-12" },
+                    React.createElement(Brain, { className: "w-16 h-16 text-gray-400 mx-auto mb-4" }),
+                    React.createElement('h3', { className: "text-lg font-medium text-gray-900 mb-2" }, "No Test Recommendations Yet"),
+                    React.createElement('p', { className: "text-gray-600" }, "Upload your documents and generate tests to see cluster-based recommendations.")
+                );
+            }
+
+            return React.createElement('div', { className: "space-y-6" },
+                // Header with Controls
+                React.createElement('div', { className: "bg-white rounded-lg border border-gray-200 p-6" },
+                    React.createElement('div', { className: "flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0" },
+                        React.createElement('div', null,
+                            React.createElement('h2', { className: "text-2xl font-bold text-gray-900 mb-2 flex items-center" },
+                                React.createElement(Brain, { className: "w-8 h-8 mr-3 text-blue-600" }),
+                                "AI Test Recommendations"
+                            ),
+                            React.createElement('p', { className: "text-gray-600" }, 
+                                `Generated ${totalTests} test recommendations across ${clusters.length} content clusters`
+                            )
+                        ),
+
+                        React.createElement('div', { className: "flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4" },
+                            // Search
+                            React.createElement('div', { className: "relative" },
+                                React.createElement(Search, { className: "w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" }),
+                                React.createElement('input', {
+                                    type: "text",
+                                    placeholder: "Search tests...",
+                                    value: searchTerm,
+                                    onChange: (e) => setSearchTerm(e.target.value),
+                                    className: "pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent w-64"
+                                })
+                            ),
+
+                            // View Toggle
+                            React.createElement('div', { className: "flex bg-gray-100 p-1 rounded-lg" },
+                                React.createElement('button', {
+                                    onClick: () => setViewMode('cluster'),
+                                    className: `px-4 py-2 rounded-md transition-all text-sm ${
+                                        viewMode === 'cluster' 
+                                            ? 'bg-blue-500 text-white shadow-md' 
+                                            : 'text-gray-600 hover:text-gray-800'
+                                    }`
+                                },
+                                    React.createElement(Layers, { className: "w-4 h-4 inline mr-1" }),
+                                    "By Clusters"
+                                ),
+                                React.createElement('button', {
+                                    onClick: () => setViewMode('flat'),
+                                    className: `px-4 py-2 rounded-md transition-all text-sm ${
+                                        viewMode === 'flat' 
+                                            ? 'bg-blue-500 text-white shadow-md' 
+                                            : 'text-gray-600 hover:text-gray-800'
+                                    }`
+                                },
+                                    React.createElement(FileText, { className: "w-4 h-4 inline mr-1" }),
+                                    "Flat View"
+                                )
+                            )
+                        )
+                    )
+                ),
+
+                // Content
+                renderClusterView()
+            );
+        };
+
+        // Test Card Component with Cluster Information
+        const TestCard = ({ test, clusterId, clusterDescription, showClusterInfo = false }) => {
+            const getCategoryIcon = (category) => {
+                const icons = {
+                    functional: Target,
+                    security: Shield,
+                    performance: Zap,
+                    usability: Users,
+                    api: Code,
+                    integration: BarChart3,
+                    data: Database,
+                    domain_specific: GitBranch,
+                    compatibility: Activity,
+                    non_functional: Layers
+                };
+                return icons[category?.toLowerCase()] || Target;
+            };
+
+            const getCategoryStyles = (category) => {
+                const styles = {
+                    functional: { bg: 'bg-blue-100', text: 'text-blue-600' },
+                    security: { bg: 'bg-red-100', text: 'text-red-600' },
+                    performance: { bg: 'bg-green-100', text: 'text-green-600' },
+                    usability: { bg: 'bg-purple-100', text: 'text-purple-600' },
+                    api: { bg: 'bg-indigo-100', text: 'text-indigo-600' },
+                    integration: { bg: 'bg-pink-100', text: 'text-pink-600' },
+                    data: { bg: 'bg-yellow-100', text: 'text-yellow-600' },
+                    domain_specific: { bg: 'bg-orange-100', text: 'text-orange-600' },
+                    compatibility: { bg: 'bg-teal-100', text: 'text-teal-600' },
+                    non_functional: { bg: 'bg-gray-100', text: 'text-gray-600' }
+                };
+                return styles[category?.toLowerCase()] || styles.non_functional;
+            };
+
+            const getPriorityColor = (priority) => {
+                const colors = {
+                    critical: 'bg-red-100 text-red-800 border-red-200',
+                    high: 'bg-orange-100 text-orange-800 border-orange-200',
+                    medium: 'bg-yellow-100 text-yellow-800 border-yellow-200',
+                    low: 'bg-gray-100 text-gray-800 border-gray-200'
+                };
+                return colors[priority?.toLowerCase()] || 'bg-gray-100 text-gray-800 border-gray-200';
+            };
+
+            const CategoryIcon = getCategoryIcon(test.test_category);
+            const categoryStyles = getCategoryStyles(test.test_category);
+
+            return React.createElement('div', { className: "border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors bg-white" },
+                React.createElement('div', { className: "flex items-start justify-between mb-3" },
+                    React.createElement('div', { className: "flex items-start space-x-3 flex-1" },
+                        React.createElement('div', { className: `${categoryStyles.bg} rounded-lg p-2 flex-shrink-0` },
+                            React.createElement(CategoryIcon, { className: `w-4 h-4 ${categoryStyles.text}` })
+                        ),
+                        React.createElement('div', { className: "flex-1 min-w-0" },
+                            React.createElement('h4', { className: "font-semibold text-gray-900 mb-1" }, test.test_name),
+                            React.createElement('p', { className: "text-sm text-gray-600 mb-2" }, test.test_description),
+                            
+                            // Cluster Information
+                            showClusterInfo && React.createElement('div', { className: "flex items-center space-x-2 mb-2" },
+                                React.createElement('span', { className: "inline-flex items-center px-2 py-1 bg-blue-50 text-blue-700 rounded-md text-xs" },
+                                    React.createElement(Layers, { className: "w-3 h-3 mr-1" }),
+                                    `From Cluster ${clusterId}`
+                                ),
+                                clusterDescription && React.createElement('span', { className: "text-xs text-gray-500 truncate max-w-xs" }, 
+                                    `• ${clusterDescription}`
+                                )
+                            ),
+                            
+                            React.createElement('div', { className: "flex items-center space-x-3 text-xs text-gray-500" },
+                                React.createElement('span', { className: "capitalize" }, `Category: ${test.test_category}`),
+                                test.estimated_effort && React.createElement('span', null, `Effort: ${test.estimated_effort}`)
+                            )
+                        )
+                    ),
+                    
+                    React.createElement('div', { className: "flex flex-col items-end space-y-2 flex-shrink-0" },
+                        React.createElement('span', { className: `px-2 py-1 rounded-full text-xs font-medium border ${getPriorityColor(test.priority)}` },
+                            test.priority
+                        )
+                    )
+                )
+            );
+        };
+
+        const App = () => {
+            return React.createElement('div', { className: "min-h-screen bg-gray-50 p-6" },
+                React.createElement('div', { className: "max-w-7xl mx-auto" },
+                    React.createElement('div', { className: "text-center mb-8" },
+                        React.createElement('h1', { className: "text-4xl font-bold text-gray-900 mb-4" }, "Enhanced Test Recommendations Demo"),
+                        React.createElement('p', { className: "text-lg text-gray-600 mb-2" }, 
+                            "This demo shows the enhanced UI with cluster-based test recommendations"
+                        ),
+                        React.createElement('p', { className: "text-sm text-blue-600 bg-blue-50 inline-block px-4 py-2 rounded-lg" },
+                            "✨ Now with cluster source attribution and detailed cluster analysis!"
+                        )
+                    ),
+                    React.createElement(EnhancedTestRecommendation, { 
+                        recommendations: sampleRecommendations, 
+                        debugMode: true 
+                    })
+                )
+            );
+        };
+
+        ReactDOM.render(React.createElement(App), document.getElementById('root'));
+    </script>
+</body>
+</html>
