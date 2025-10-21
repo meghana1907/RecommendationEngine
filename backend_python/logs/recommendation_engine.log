@@ -14182,3 +14182,625 @@ Please retry in 9.766344981s. [violations {
 2025-10-16 11:29:00,245 - main - INFO - Performing gap analysis on combined content
 2025-10-16 11:29:00,246 - main - ERROR - Gap analysis failed: sequence item 0: expected str instance, dict found
 2025-10-16 11:29:00,247 - main - INFO - Comparison completed successfully
+2025-10-21 11:03:45,101 - main - WARNING - Failed to initialize Supabase client: Client.__init__() got an unexpected keyword argument 'proxy'
+2025-10-21 11:03:45,101 - main - INFO - Gemini AI API key configured successfully
+2025-10-21 11:03:45,120 - services.document_processor - INFO - Document processor initialized with semantic chunking capabilities
+2025-10-21 11:03:45,120 - services.embedding_service - WARNING - sentence-transformers not available
+2025-10-21 11:03:45,121 - services.clustering_service - INFO - Clustering service initialized with OPTIMIZED parameters for fewer API calls
+2025-10-21 11:04:59,815 - main - INFO - Authenticating with Jira for project: Zuri Bot, epic: None, sprint: ZT Sprint 1, issueType: all
+2025-10-21 11:04:59,815 - main - INFO - Validating Jira authentication with endpoint: https://amzur.atlassian.net/rest/api/3/myself
+2025-10-21 11:05:00,327 - main - INFO - Jira authentication successful
+2025-10-21 11:05:00,327 - main - INFO - Using JQL query: project = "Zuri Bot" AND sprint = "ZT Sprint 1" AND issuetype = "all"
+2025-10-21 11:05:00,854 - main - INFO - Successfully fetched 0 Jira issues
+2025-10-21 11:05:27,995 - main - INFO - Authenticating with Jira for project: Zuri Bot, epic: None, sprint: ZT Sprint 1, issueType: story
+2025-10-21 11:05:27,995 - main - INFO - Validating Jira authentication with endpoint: https://amzur.atlassian.net/rest/api/3/myself
+2025-10-21 11:05:28,568 - main - INFO - Jira authentication successful
+2025-10-21 11:05:28,569 - main - INFO - Using JQL query: project = "Zuri Bot" AND sprint = "ZT Sprint 1" AND issuetype = "story"
+2025-10-21 11:05:29,216 - main - INFO - Successfully fetched 5 Jira issues
+2025-10-21 11:05:29,246 - main - INFO - Processing 5 Jira issues for session session-1761024927989-azbcc6ah0v4
+2025-10-21 11:05:29,247 - main - INFO - Converted 5 Jira issues to user stories
+2025-10-21 11:05:34,628 - main - INFO - Received comparison request
+2025-10-21 11:05:34,629 - main - INFO - Using 5 pre-processed user stories for comparison
+2025-10-21 11:05:34,629 - main - INFO - Creating direct comparison workflow
+2025-10-21 11:05:34,630 - main - INFO - Direct comparison workflow created successfully
+2025-10-21 11:05:34,633 - main - INFO - Analyzing BRD content with Gemini (direct comparison)
+2025-10-21 11:05:42,045 - main - INFO - BRD analysis completed successfully with Gemini
+2025-10-21 11:05:42,047 - main - INFO - Comparing BRD analysis with pre-processed user stories using Gemini
+2025-10-21 11:05:45,220 - main - INFO - Successfully extracted 1 missing requirements
+2025-10-21 11:05:45,220 - main - INFO - Comparison analysis completed successfully with Gemini
+2025-10-21 11:05:45,221 - main - INFO - Storing comparison results in Supabase
+2025-10-21 11:05:45,222 - main - WARNING - Supabase not available, skipping storage
+2025-10-21 11:05:45,222 - main - INFO - Performing gap analysis on combined content
+2025-10-21 11:05:45,222 - main - ERROR - Gap analysis failed: sequence item 0: expected str instance, dict found
+2025-10-21 11:05:45,222 - main - INFO - Comparison completed successfully
+2025-10-21 11:08:34,745 - main - WARNING - Failed to initialize Supabase client: Client.__init__() got an unexpected keyword argument 'proxy'
+2025-10-21 11:08:34,745 - main - INFO - Gemini AI API key configured successfully
+2025-10-21 11:08:34,772 - services.document_processor - INFO - Document processor initialized with semantic chunking capabilities
+2025-10-21 11:08:34,773 - services.embedding_service - WARNING - sentence-transformers not available
+2025-10-21 11:08:34,773 - services.clustering_service - INFO - Clustering service initialized with OPTIMIZED parameters for fewer API calls
+2025-10-21 11:08:38,825 - main - INFO - Received comparison request
+2025-10-21 11:08:38,825 - main - INFO - Using 5 pre-processed user stories for comparison
+2025-10-21 11:08:38,825 - main - INFO - Creating direct comparison workflow
+2025-10-21 11:08:38,826 - main - INFO - Direct comparison workflow created successfully
+2025-10-21 11:08:38,830 - main - INFO - Analyzing BRD content with Gemini (direct comparison)
+2025-10-21 11:08:46,668 - main - INFO - BRD analysis completed successfully with Gemini
+2025-10-21 11:08:46,669 - main - INFO - Comparing BRD analysis with pre-processed user stories using Gemini
+2025-10-21 11:08:51,176 - main - INFO - Successfully extracted 1 missing requirements
+2025-10-21 11:08:51,176 - main - INFO - Comparison analysis completed successfully with Gemini
+2025-10-21 11:08:51,177 - main - INFO - Storing comparison results in Supabase
+2025-10-21 11:08:51,178 - main - WARNING - Supabase not available, skipping storage
+2025-10-21 11:08:51,178 - main - INFO - Performing gap analysis on combined content
+2025-10-21 11:08:51,178 - main - ERROR - Gap analysis failed: sequence item 0: expected str instance, dict found
+2025-10-21 11:08:51,178 - main - INFO - Comparison completed successfully
+2025-10-21 11:11:43,641 - main - WARNING - Failed to initialize Supabase client: Client.__init__() got an unexpected keyword argument 'proxy'
+2025-10-21 11:11:43,641 - main - INFO - Gemini AI API key configured successfully
+2025-10-21 11:11:43,659 - services.document_processor - INFO - Document processor initialized with semantic chunking capabilities
+2025-10-21 11:11:43,659 - services.embedding_service - WARNING - sentence-transformers not available
+2025-10-21 11:11:43,659 - services.clustering_service - INFO - Clustering service initialized with OPTIMIZED parameters for fewer API calls
+2025-10-21 11:13:07,148 - main - INFO - Received comparison request
+2025-10-21 11:13:07,149 - main - INFO - Using 5 pre-processed user stories for comparison
+2025-10-21 11:13:07,149 - main - INFO - Creating direct comparison workflow
+2025-10-21 11:13:07,150 - main - INFO - Direct comparison workflow created successfully
+2025-10-21 11:13:07,155 - main - INFO - Analyzing BRD content with Gemini (direct comparison)
+2025-10-21 11:13:14,635 - main - INFO - BRD analysis completed successfully with Gemini
+2025-10-21 11:13:14,637 - main - INFO - Comparing BRD analysis with pre-processed user stories using Gemini
+2025-10-21 11:13:17,561 - main - INFO - Successfully extracted 0 missing requirements
+2025-10-21 11:13:17,562 - main - INFO - Comparison analysis completed successfully with Gemini
+2025-10-21 11:13:17,565 - main - INFO - Storing comparison results in Supabase
+2025-10-21 11:13:17,566 - main - WARNING - Supabase not available, skipping storage
+2025-10-21 11:13:17,566 - main - INFO - Performing gap analysis on combined content
+2025-10-21 11:13:17,566 - main - ERROR - Gap analysis failed: sequence item 0: expected str instance, dict found
+2025-10-21 11:13:17,566 - main - INFO - Comparison completed successfully
+2025-10-21 11:16:15,818 - main - WARNING - Failed to initialize Supabase client: Client.__init__() got an unexpected keyword argument 'proxy'
+2025-10-21 11:16:15,818 - main - INFO - Gemini AI API key configured successfully
+2025-10-21 11:16:15,843 - services.document_processor - INFO - Document processor initialized with semantic chunking capabilities
+2025-10-21 11:16:15,843 - services.embedding_service - WARNING - sentence-transformers not available
+2025-10-21 11:16:15,844 - services.clustering_service - INFO - Clustering service initialized with OPTIMIZED parameters for fewer API calls
+2025-10-21 11:16:38,125 - main - WARNING - Failed to initialize Supabase client: Client.__init__() got an unexpected keyword argument 'proxy'
+2025-10-21 11:16:38,126 - main - INFO - Gemini AI API key configured successfully
+2025-10-21 11:16:38,151 - services.document_processor - INFO - Document processor initialized with semantic chunking capabilities
+2025-10-21 11:16:38,151 - services.embedding_service - WARNING - sentence-transformers not available
+2025-10-21 11:16:38,152 - services.clustering_service - INFO - Clustering service initialized with OPTIMIZED parameters for fewer API calls
+2025-10-21 11:17:57,079 - main - WARNING - Failed to initialize Supabase client: Client.__init__() got an unexpected keyword argument 'proxy'
+2025-10-21 11:17:57,079 - main - INFO - Gemini AI API key configured successfully
+2025-10-21 11:17:57,098 - services.document_processor - INFO - Document processor initialized with semantic chunking capabilities
+2025-10-21 11:17:57,099 - services.embedding_service - WARNING - sentence-transformers not available
+2025-10-21 11:17:57,099 - services.clustering_service - INFO - Clustering service initialized with OPTIMIZED parameters for fewer API calls
+2025-10-21 11:18:05,653 - main - INFO - Received comparison request
+2025-10-21 11:18:05,654 - main - INFO - Using 5 pre-processed user stories for comparison
+2025-10-21 11:18:05,654 - main - INFO - Creating direct comparison workflow
+2025-10-21 11:18:05,655 - main - INFO - Direct comparison workflow created successfully
+2025-10-21 11:18:05,659 - main - INFO - Analyzing BRD content with Gemini (direct comparison)
+2025-10-21 11:18:14,023 - main - INFO - BRD analysis completed successfully with Gemini
+2025-10-21 11:18:14,024 - main - INFO - Comparing BRD analysis with pre-processed user stories using Gemini
+2025-10-21 11:18:18,442 - main - INFO - Successfully extracted 0 missing requirements
+2025-10-21 11:18:18,443 - main - INFO - Comparison analysis completed successfully with Gemini
+2025-10-21 11:18:18,444 - main - INFO - Storing comparison results in Supabase
+2025-10-21 11:18:18,444 - main - WARNING - Supabase not available, skipping storage
+2025-10-21 11:18:18,444 - main - INFO - Performing gap analysis on combined content
+2025-10-21 11:18:18,444 - main - ERROR - Gap analysis failed: sequence item 0: expected str instance, dict found
+2025-10-21 11:18:18,445 - main - ERROR - Gap analysis error traceback: Traceback (most recent call last):
+  File "/home/yamunay/Desktop/poc/RecommendationEngine/backend_python/main.py", line 1620, in compare_brd_stories
+    user_stories_text = "\n".join([story.get('description', '') for story in result.get('user_stories', [])])
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: sequence item 0: expected str instance, dict found
+
+2025-10-21 11:18:18,445 - main - INFO - Comparison completed successfully
+2025-10-21 11:20:11,064 - main - WARNING - Failed to initialize Supabase client: Client.__init__() got an unexpected keyword argument 'proxy'
+2025-10-21 11:20:11,064 - main - INFO - Gemini AI API key configured successfully
+2025-10-21 11:20:11,088 - services.document_processor - INFO - Document processor initialized with semantic chunking capabilities
+2025-10-21 11:20:11,089 - services.embedding_service - WARNING - sentence-transformers not available
+2025-10-21 11:20:11,089 - services.clustering_service - INFO - Clustering service initialized with OPTIMIZED parameters for fewer API calls
+2025-10-21 11:20:11,123 - main - INFO - Received comparison request
+2025-10-21 11:20:11,124 - main - INFO - Using 5 pre-processed user stories for comparison
+2025-10-21 11:20:11,124 - main - INFO - Creating direct comparison workflow
+2025-10-21 11:20:11,124 - main - INFO - Direct comparison workflow created successfully
+2025-10-21 11:20:11,128 - main - INFO - Analyzing BRD content with Gemini (direct comparison)
+2025-10-21 11:20:19,462 - main - INFO - BRD analysis completed successfully with Gemini
+2025-10-21 11:20:19,464 - main - INFO - Comparing BRD analysis with pre-processed user stories using Gemini
+2025-10-21 11:20:22,366 - main - INFO - Successfully extracted 0 missing requirements
+2025-10-21 11:20:22,366 - main - INFO - Comparison analysis completed successfully with Gemini
+2025-10-21 11:20:22,367 - main - INFO - Storing comparison results in Supabase
+2025-10-21 11:20:22,368 - main - WARNING - Supabase not available, skipping storage
+2025-10-21 11:20:22,368 - main - INFO - Performing gap analysis on combined content
+2025-10-21 11:20:22,368 - main - INFO - Added 5 user stories to combined content
+2025-10-21 11:20:22,368 - main - INFO - Gap analysis content hash: 66737822
+2025-10-21 11:20:22,368 - main - INFO - Gap analysis content preview: Business Requirements Document (BRD)
+Project Name:  Zuri Sales & Dashboard Enhancements
+Document Owner:  [Your Name / Project Manager]
+Date:  09-Oct-2025
+Version:  1.0
+1. Purpose
+This document defines...
+2025-10-21 11:20:22,370 - services.domain_aware_test_engine - INFO - [DOMAIN DETECTION] Scores: {<DomainType.ECOMMERCE: 'ecommerce'>: 2, <DomainType.BUSINESS_MANAGEMENT: 'business_management'>: 369, <DomainType.EV_CHARGING: 'ev_charging'>: 75, <DomainType.IOT_SMART_HOME: 'iot_smart_home'>: 14, <DomainType.FINTECH: 'fintech'>: 6, <DomainType.HEALTHCARE: 'healthcare'>: 0}
+2025-10-21 11:20:22,370 - services.domain_aware_test_engine - INFO - [DOMAIN DETECTION] Detected domain: business_management
+2025-10-21 11:20:22,370 - main - INFO - Detected domain: business_management
+2025-10-21 11:20:22,370 - services.domain_aware_test_engine - INFO - [GAP ANALYSIS] Starting analysis for domain: business_management
+2025-10-21 11:20:22,370 - services.domain_aware_test_engine - INFO - [GAP ANALYSIS] Content length: 7876 characters
+2025-10-21 11:20:22,370 - services.domain_aware_test_engine - INFO - [GAP ANALYSIS] Coverage calculation: 4/4 = 100.0%
+2025-10-21 11:20:22,370 - services.domain_aware_test_engine - INFO - [GAP ANALYSIS] Final result - Domain: business_management, Coverage: 100%, Has critical gaps: False, Missing: 0
+2025-10-21 11:20:22,370 - main - INFO - Gap analysis completed successfully - hash: 66737822, has_gaps: False, coverage: 100.0%, status: complete
+2025-10-21 11:20:22,371 - main - INFO - Comparison completed successfully
+2025-10-21 11:20:32,271 - main - WARNING - Failed to initialize Supabase client: Client.__init__() got an unexpected keyword argument 'proxy'
+2025-10-21 11:20:32,271 - main - INFO - Gemini AI API key configured successfully
+2025-10-21 11:20:32,284 - services.document_processor - INFO - Document processor initialized with semantic chunking capabilities
+2025-10-21 11:20:32,285 - services.embedding_service - WARNING - sentence-transformers not available
+2025-10-21 11:20:32,285 - services.clustering_service - INFO - Clustering service initialized with OPTIMIZED parameters for fewer API calls
+2025-10-21 11:21:22,673 - main - WARNING - Failed to initialize Supabase client: Client.__init__() got an unexpected keyword argument 'proxy'
+2025-10-21 11:21:22,674 - main - INFO - Gemini AI API key configured successfully
+2025-10-21 11:21:22,692 - services.document_processor - INFO - Document processor initialized with semantic chunking capabilities
+2025-10-21 11:21:22,692 - services.embedding_service - WARNING - sentence-transformers not available
+2025-10-21 11:21:22,692 - services.clustering_service - INFO - Clustering service initialized with OPTIMIZED parameters for fewer API calls
+2025-10-21 11:21:22,726 - main - INFO - Authenticating with Jira for project: Zuri Bot, epic: None, sprint: ZT Sprint 1, issueType: story
+2025-10-21 11:21:22,726 - main - INFO - Validating Jira authentication with endpoint: https://amzur.atlassian.net/rest/api/3/myself
+2025-10-21 11:21:23,649 - main - INFO - Jira authentication successful
+2025-10-21 11:21:23,650 - main - INFO - Using JQL query: project = "Zuri Bot" AND sprint = "ZT Sprint 1" AND issuetype = "story"
+2025-10-21 11:21:24,536 - main - INFO - Successfully fetched 5 Jira issues
+2025-10-21 11:21:24,557 - main - INFO - Processing 5 Jira issues for session session-1761025875271-puammv637x
+2025-10-21 11:21:24,557 - main - INFO - Converted 5 Jira issues to user stories
+2025-10-21 11:21:26,392 - main - INFO - Received comparison request
+2025-10-21 11:21:26,392 - main - INFO - Using 5 pre-processed user stories for comparison
+2025-10-21 11:21:26,393 - main - INFO - Creating direct comparison workflow
+2025-10-21 11:21:26,393 - main - INFO - Direct comparison workflow created successfully
+2025-10-21 11:21:26,398 - main - INFO - Analyzing BRD content with Gemini (direct comparison)
+2025-10-21 11:21:38,304 - main - INFO - BRD analysis completed successfully with Gemini
+2025-10-21 11:21:38,305 - main - INFO - Comparing BRD analysis with pre-processed user stories using Gemini
+2025-10-21 11:21:42,318 - main - INFO - Successfully extracted 20 missing requirements
+2025-10-21 11:21:42,318 - main - INFO - Comparison analysis completed successfully with Gemini
+2025-10-21 11:21:42,319 - main - INFO - Storing comparison results in Supabase
+2025-10-21 11:21:42,319 - main - WARNING - Supabase not available, skipping storage
+2025-10-21 11:21:42,319 - main - INFO - Performing gap analysis on combined content
+2025-10-21 11:21:42,320 - main - INFO - Added 5 user stories to combined content for gap analysis
+2025-10-21 11:21:42,320 - main - INFO - Gap analysis content hash: d9d14ab4
+2025-10-21 11:21:42,320 - main - INFO - Gap analysis content preview: Key Summary Story Type Acceptance Criteria
+EVOKE-1 CNO can log in and access Subscription Management Feature Given I have CNO credentials, when I access the portal, then I can successfully log in and ...
+2025-10-21 11:21:42,323 - services.domain_aware_test_engine - INFO - [DOMAIN DETECTION] Scores: {<DomainType.ECOMMERCE: 'ecommerce'>: 14, <DomainType.BUSINESS_MANAGEMENT: 'business_management'>: 348, <DomainType.EV_CHARGING: 'ev_charging'>: 195, <DomainType.IOT_SMART_HOME: 'iot_smart_home'>: 24, <DomainType.FINTECH: 'fintech'>: 16, <DomainType.HEALTHCARE: 'healthcare'>: 0}
+2025-10-21 11:21:42,323 - services.domain_aware_test_engine - INFO - [DOMAIN DETECTION] Detected domain: business_management
+2025-10-21 11:21:42,323 - main - INFO - Detected domain: business_management
+2025-10-21 11:21:42,323 - services.domain_aware_test_engine - INFO - [GAP ANALYSIS] Starting analysis for domain: business_management
+2025-10-21 11:21:42,323 - services.domain_aware_test_engine - INFO - [GAP ANALYSIS] Content length: 11151 characters
+2025-10-21 11:21:42,324 - services.domain_aware_test_engine - INFO - [GAP ANALYSIS] Coverage calculation: 4/4 = 100.0%
+2025-10-21 11:21:42,324 - services.domain_aware_test_engine - INFO - [GAP ANALYSIS] Final result - Domain: business_management, Coverage: 100%, Has critical gaps: False, Missing: 0
+2025-10-21 11:21:42,324 - main - INFO - Gap analysis completed successfully - hash: d9d14ab4, has_gaps: False, coverage: 100.0%, status: complete
+2025-10-21 11:21:42,324 - main - INFO - Comparison completed successfully
+2025-10-21 11:22:10,163 - main - WARNING - Failed to initialize Supabase client: Client.__init__() got an unexpected keyword argument 'proxy'
+2025-10-21 11:22:10,163 - main - INFO - Gemini AI API key configured successfully
+2025-10-21 11:22:10,182 - services.document_processor - INFO - Document processor initialized with semantic chunking capabilities
+2025-10-21 11:22:10,183 - services.embedding_service - WARNING - sentence-transformers not available
+2025-10-21 11:22:10,183 - services.clustering_service - INFO - Clustering service initialized with OPTIMIZED parameters for fewer API calls
+2025-10-21 11:22:15,458 - main - INFO - Authenticating with Jira for project: Zuri Bot, epic: None, sprint: ZT Sprint 1, issueType: story
+2025-10-21 11:22:15,458 - main - INFO - Validating Jira authentication with endpoint: https://amzur.atlassian.net/rest/api/3/myself
+2025-10-21 11:22:15,955 - main - INFO - Jira authentication successful
+2025-10-21 11:22:15,956 - main - INFO - Using JQL query: project = "Zuri Bot" AND sprint = "ZT Sprint 1" AND issuetype = "story"
+2025-10-21 11:22:16,670 - main - INFO - Successfully fetched 5 Jira issues
+2025-10-21 11:22:16,690 - main - INFO - Processing 5 Jira issues for session session-1761025935454-9ygcwubq3bg
+2025-10-21 11:22:16,691 - main - INFO - Converted 5 Jira issues to user stories
+2025-10-21 11:25:06,138 - main - WARNING - Failed to initialize Supabase client: Client.__init__() got an unexpected keyword argument 'proxy'
+2025-10-21 11:25:06,138 - main - INFO - Gemini AI API key configured successfully
+2025-10-21 11:25:06,145 - services.document_processor - INFO - Document processor initialized with semantic chunking capabilities
+2025-10-21 11:25:06,145 - services.embedding_service - WARNING - sentence-transformers not available
+2025-10-21 11:25:06,145 - services.clustering_service - INFO - Clustering service initialized with OPTIMIZED parameters for fewer API calls
+2025-10-21 11:25:35,547 - main - WARNING - Failed to initialize Supabase client: Client.__init__() got an unexpected keyword argument 'proxy'
+2025-10-21 11:25:35,547 - main - INFO - Gemini AI API key configured successfully
+2025-10-21 11:25:35,556 - services.document_processor - INFO - Document processor initialized with semantic chunking capabilities
+2025-10-21 11:25:35,556 - services.embedding_service - WARNING - sentence-transformers not available
+2025-10-21 11:25:35,556 - services.clustering_service - INFO - Clustering service initialized with OPTIMIZED parameters for fewer API calls
+2025-10-21 11:25:43,604 - main - WARNING - Failed to initialize Supabase client: Client.__init__() got an unexpected keyword argument 'proxy'
+2025-10-21 11:25:43,604 - main - INFO - Gemini AI API key configured successfully
+2025-10-21 11:25:43,611 - services.document_processor - INFO - Document processor initialized with semantic chunking capabilities
+2025-10-21 11:25:43,611 - services.embedding_service - WARNING - sentence-transformers not available
+2025-10-21 11:25:43,611 - services.clustering_service - INFO - Clustering service initialized with OPTIMIZED parameters for fewer API calls
+2025-10-21 11:26:10,465 - main - INFO - Received comparison request
+2025-10-21 11:26:10,465 - main - INFO - Using 5 pre-processed user stories for comparison
+2025-10-21 11:26:10,465 - main - INFO - Creating direct comparison workflow
+2025-10-21 11:26:10,466 - main - INFO - Direct comparison workflow created successfully
+2025-10-21 11:26:10,470 - main - INFO - Analyzing BRD content with Gemini (direct comparison)
+2025-10-21 11:26:21,003 - main - INFO - BRD analysis completed successfully with Gemini
+2025-10-21 11:26:21,004 - main - INFO - Comparing BRD analysis with pre-processed user stories using Gemini
+2025-10-21 11:26:26,271 - main - INFO - Successfully extracted 17 missing requirements
+2025-10-21 11:26:26,272 - main - INFO - Comparison analysis completed successfully with Gemini
+2025-10-21 11:26:26,273 - main - INFO - Storing comparison results in Supabase
+2025-10-21 11:26:26,273 - main - WARNING - Supabase not available, skipping storage
+2025-10-21 11:26:26,273 - main - INFO - Performing comprehensive gap analysis and coverage calculation
+2025-10-21 11:26:26,274 - main - ERROR - Gap analysis failed: sequence item 0: expected str instance, dict found
+2025-10-21 11:26:26,274 - main - INFO - Comparison completed successfully
+2025-10-21 11:26:55,414 - main - INFO - Authenticating with Jira for project: Zuri Bot, epic: None, sprint: ZT Sprint 1, issueType: story
+2025-10-21 11:26:55,414 - main - INFO - Validating Jira authentication with endpoint: https://amzur.atlassian.net/rest/api/3/myself
+2025-10-21 11:26:57,175 - main - INFO - Jira authentication successful
+2025-10-21 11:26:57,175 - main - INFO - Using JQL query: project = "Zuri Bot" AND sprint = "ZT Sprint 1" AND issuetype = "story"
+2025-10-21 11:26:58,446 - main - INFO - Successfully fetched 5 Jira issues
+2025-10-21 11:26:58,462 - main - INFO - Processing 5 Jira issues for session session-1761026215409-389lqc8sa2h
+2025-10-21 11:26:58,463 - main - INFO - Converted 5 Jira issues to user stories
+2025-10-21 11:27:01,236 - main - INFO - Received comparison request
+2025-10-21 11:27:01,237 - main - INFO - Using 5 pre-processed user stories for comparison
+2025-10-21 11:27:01,237 - main - INFO - Creating direct comparison workflow
+2025-10-21 11:27:01,238 - main - INFO - Direct comparison workflow created successfully
+2025-10-21 11:27:01,241 - main - INFO - Analyzing BRD content with Gemini (direct comparison)
+2025-10-21 11:27:07,700 - main - INFO - BRD analysis completed successfully with Gemini
+2025-10-21 11:27:07,701 - main - INFO - Comparing BRD analysis with pre-processed user stories using Gemini
+2025-10-21 11:27:10,566 - main - INFO - Successfully extracted 1 missing requirements
+2025-10-21 11:27:10,566 - main - INFO - Comparison analysis completed successfully with Gemini
+2025-10-21 11:27:10,568 - main - INFO - Storing comparison results in Supabase
+2025-10-21 11:27:10,568 - main - WARNING - Supabase not available, skipping storage
+2025-10-21 11:27:10,568 - main - INFO - Performing comprehensive gap analysis and coverage calculation
+2025-10-21 11:27:10,568 - main - ERROR - Gap analysis failed: sequence item 0: expected str instance, dict found
+2025-10-21 11:27:10,568 - main - INFO - Comparison completed successfully
+2025-10-21 11:27:22,013 - main - WARNING - Failed to initialize Supabase client: Client.__init__() got an unexpected keyword argument 'proxy'
+2025-10-21 11:27:22,013 - main - INFO - Gemini AI API key configured successfully
+2025-10-21 11:27:22,029 - services.document_processor - INFO - Document processor initialized with semantic chunking capabilities
+2025-10-21 11:27:22,030 - services.embedding_service - WARNING - sentence-transformers not available
+2025-10-21 11:27:22,030 - services.clustering_service - INFO - Clustering service initialized with OPTIMIZED parameters for fewer API calls
+2025-10-21 11:27:40,151 - main - WARNING - Failed to initialize Supabase client: Client.__init__() got an unexpected keyword argument 'proxy'
+2025-10-21 11:27:40,152 - main - INFO - Gemini AI API key configured successfully
+2025-10-21 11:27:40,173 - services.document_processor - INFO - Document processor initialized with semantic chunking capabilities
+2025-10-21 11:27:40,173 - services.embedding_service - WARNING - sentence-transformers not available
+2025-10-21 11:27:40,173 - services.clustering_service - INFO - Clustering service initialized with OPTIMIZED parameters for fewer API calls
+2025-10-21 11:28:45,701 - main - INFO - Received comparison request
+2025-10-21 11:28:45,702 - main - INFO - Using 5 pre-processed user stories for comparison
+2025-10-21 11:28:45,702 - main - INFO - Creating direct comparison workflow
+2025-10-21 11:28:45,704 - main - INFO - Direct comparison workflow created successfully
+2025-10-21 11:28:45,708 - main - INFO - Analyzing BRD content with Gemini (direct comparison)
+2025-10-21 11:28:55,983 - main - INFO - BRD analysis completed successfully with Gemini
+2025-10-21 11:28:55,985 - main - INFO - Comparing BRD analysis with pre-processed user stories using Gemini
+2025-10-21 11:28:59,606 - main - INFO - Successfully extracted 0 missing requirements
+2025-10-21 11:28:59,606 - main - INFO - Comparison analysis completed successfully with Gemini
+2025-10-21 11:28:59,607 - main - INFO - Storing comparison results in Supabase
+2025-10-21 11:28:59,607 - main - WARNING - Supabase not available, skipping storage
+2025-10-21 11:28:59,607 - main - INFO - Performing comprehensive gap analysis and coverage calculation
+2025-10-21 11:28:59,608 - main - ERROR - Gap analysis failed: sequence item 0: expected str instance, dict found
+2025-10-21 11:28:59,608 - main - INFO - Comparison completed successfully
+2025-10-21 11:29:27,450 - main - WARNING - Failed to initialize Supabase client: Client.__init__() got an unexpected keyword argument 'proxy'
+2025-10-21 11:29:27,450 - main - INFO - Gemini AI API key configured successfully
+2025-10-21 11:29:27,459 - services.document_processor - INFO - Document processor initialized with semantic chunking capabilities
+2025-10-21 11:29:27,459 - services.embedding_service - WARNING - sentence-transformers not available
+2025-10-21 11:29:27,459 - services.clustering_service - INFO - Clustering service initialized with OPTIMIZED parameters for fewer API calls
+2025-10-21 11:31:32,141 - main - INFO - Received comparison request
+2025-10-21 11:31:32,141 - main - INFO - Using 5 pre-processed user stories for comparison
+2025-10-21 11:31:32,141 - main - INFO - Creating direct comparison workflow
+2025-10-21 11:31:32,142 - main - INFO - Direct comparison workflow created successfully
+2025-10-21 11:31:32,147 - main - INFO - Analyzing BRD content with Gemini (direct comparison)
+2025-10-21 11:31:40,509 - main - INFO - BRD analysis completed successfully with Gemini
+2025-10-21 11:31:40,510 - main - INFO - Comparing BRD analysis with pre-processed user stories using Gemini
+2025-10-21 11:31:44,056 - main - INFO - Successfully extracted 1 missing requirements
+2025-10-21 11:31:44,056 - main - INFO - Comparison analysis completed successfully with Gemini
+2025-10-21 11:31:44,058 - main - INFO - Storing comparison results in Supabase
+2025-10-21 11:31:44,058 - main - WARNING - Supabase not available, skipping storage
+2025-10-21 11:31:44,058 - main - INFO - Performing comprehensive gap analysis and coverage calculation
+2025-10-21 11:31:44,058 - main - ERROR - Gap analysis failed: sequence item 0: expected str instance, dict found
+2025-10-21 11:31:44,058 - main - INFO - Comparison completed successfully
+2025-10-21 11:32:06,045 - main - INFO - Authenticating with Jira for project: Zuri Bot, epic: None, sprint: ZT Sprint 1, issueType: story
+2025-10-21 11:32:06,046 - main - INFO - Validating Jira authentication with endpoint: https://amzur.atlassian.net/rest/api/3/myself
+2025-10-21 11:32:06,815 - main - INFO - Jira authentication successful
+2025-10-21 11:32:06,815 - main - INFO - Using JQL query: project = "Zuri Bot" AND sprint = "ZT Sprint 1" AND issuetype = "story"
+2025-10-21 11:32:07,662 - main - INFO - Successfully fetched 5 Jira issues
+2025-10-21 11:32:07,689 - main - INFO - Processing 5 Jira issues for session session-1761026526037-g1vnj1tvw8m
+2025-10-21 11:32:07,689 - main - INFO - Converted 5 Jira issues to user stories
+2025-10-21 11:32:10,284 - main - INFO - Received comparison request
+2025-10-21 11:32:10,284 - main - INFO - Using 5 pre-processed user stories for comparison
+2025-10-21 11:32:10,284 - main - INFO - Creating direct comparison workflow
+2025-10-21 11:32:10,285 - main - INFO - Direct comparison workflow created successfully
+2025-10-21 11:32:10,288 - main - INFO - Analyzing BRD content with Gemini (direct comparison)
+2025-10-21 11:32:21,024 - main - INFO - BRD analysis completed successfully with Gemini
+2025-10-21 11:32:21,026 - main - INFO - Comparing BRD analysis with pre-processed user stories using Gemini
+2025-10-21 11:32:26,535 - main - INFO - Successfully extracted 17 missing requirements
+2025-10-21 11:32:26,536 - main - INFO - Comparison analysis completed successfully with Gemini
+2025-10-21 11:32:26,537 - main - INFO - Storing comparison results in Supabase
+2025-10-21 11:32:26,537 - main - WARNING - Supabase not available, skipping storage
+2025-10-21 11:32:26,538 - main - INFO - Performing comprehensive gap analysis and coverage calculation
+2025-10-21 11:32:26,538 - main - ERROR - Gap analysis failed: sequence item 0: expected str instance, dict found
+2025-10-21 11:32:26,538 - main - INFO - Comparison completed successfully
+2025-10-21 11:32:37,207 - main - INFO - [UPLOAD] Uploading text content: 5664 characters
+2025-10-21 11:32:37,207 - main - INFO - [SUCCESS] Text content uploaded successfully: text_20251021_113237_207676
+2025-10-21 11:32:37,217 - main - INFO - [UPLOAD] Uploading text content: 1031 characters
+2025-10-21 11:32:37,217 - main - INFO - [SUCCESS] Text content uploaded successfully: text_20251021_113237_217667
+2025-10-21 11:32:37,228 - main - INFO - [INTELLIGENT] Starting INTELLIGENT test generation for BRD: text_20251021_113237_207676, User Stories: text_20251021_113237_217667
+2025-10-21 11:32:37,228 - main - INFO - [PROCESS] Processing combined content with intelligent engines: 6734 characters
+2025-10-21 11:32:37,228 - main - INFO - [STEP1] Step 1: Universal Architecture Analysis
+2025-10-21 11:32:37,230 - main - INFO - [STEP2] Step 2: Domain-Aware Content Analysis
+2025-10-21 11:32:37,230 - main - INFO - [DOMAIN-AWARE] Analyzing content with consolidated Domain-Aware Engine: 6734 characters
+2025-10-21 11:32:37,231 - services.document_processor - INFO - Starting OPTIMIZED semantic chunking for document: intelligent_text_20251021_113237_207676_text_20251021_113237_217667
+2025-10-21 11:32:37,231 - services.document_processor - INFO - Input content length: 6734 characters
+2025-10-21 11:32:37,232 - services.document_processor - INFO - Section-based chunking created 42 chunks
+2025-10-21 11:32:37,233 - services.document_processor - INFO - OPTIMIZED chunking: 42 -> 42 -> 3 chunks
+2025-10-21 11:32:37,233 - services.document_processor - INFO - OPTIMIZED Chunking Statistics:
+2025-10-21 11:32:37,233 - services.document_processor - INFO -    - Total chunks: 3 (REDUCED from original)
+2025-10-21 11:32:37,234 - services.document_processor - INFO -    - Average length: 2250.3 characters (INCREASED for efficiency)
+2025-10-21 11:32:37,234 - services.document_processor - INFO -    - Max length: 2973 characters
+2025-10-21 11:32:37,234 - services.document_processor - INFO -    - Min length: 837 characters
+2025-10-21 11:32:37,234 - services.document_processor - INFO -    - Estimated API calls needed: 3 (DOWN from 42)
+2025-10-21 11:32:37,234 - services.document_processor - INFO - OPTIMIZED semantic chunking completed: 3 chunks created
+2025-10-21 11:32:37,234 - main - INFO - Created 3 semantic chunks for clustering analysis
+2025-10-21 11:32:37,234 - main - INFO - Prepared 3 valid chunks for embedding generation
+2025-10-21 11:32:37,234 - services.embedding_service - INFO - Starting embedding generation for 3 chunks
+2025-10-21 11:32:37,235 - main - INFO - Generated embeddings for 3 chunks
+2025-10-21 11:32:37,235 - services.clustering_service - INFO - [CLUSTERING] Starting clustering process for 3 embeddings
+2025-10-21 11:32:37,235 - services.clustering_service - INFO - [CLUSTERING] Extracting embedding vectors...
+2025-10-21 11:32:37,235 - services.clustering_service - INFO - [CLUSTERING] Embedding matrix shape: (3, 384)
+2025-10-21 11:32:37,235 - services.clustering_service - INFO - [CLUSTERING] Finding optimal number of clusters...
+2025-10-21 11:32:37,235 - services.clustering_service - INFO - [CLUSTERING] Finding optimal number of clusters using silhouette analysis
+2025-10-21 11:32:37,235 - services.clustering_service - INFO - [CLUSTERING] Testing cluster counts from 2 to 2
+2025-10-21 11:32:37,235 - services.clustering_service - INFO - [CLUSTERING] Testing k=2
+2025-10-21 11:32:37,304 - services.clustering_service - INFO - [CLUSTERING] k=2, silhouette_score=0.016
+2025-10-21 11:32:37,304 - services.clustering_service - INFO - [CLUSTERING] Optimal k=2 with silhouette score=0.016
+2025-10-21 11:32:37,304 - services.clustering_service - INFO - [CLUSTERING] All scores: {2: 0.016100933894800672}
+2025-10-21 11:32:37,304 - services.clustering_service - INFO - [CLUSTERING] Optimal number of clusters determined: 2
+2025-10-21 11:32:37,304 - services.clustering_service - INFO - [CLUSTERING] Performing KMeans clustering with k=2
+2025-10-21 11:32:37,315 - services.clustering_service - INFO - [CLUSTERING] KMeans clustering completed. Cluster labels: [1 0 0]
+2025-10-21 11:32:37,315 - services.clustering_service - INFO - [CLUSTERING] Creating cluster groups...
+2025-10-21 11:32:37,316 - services.clustering_service - INFO - [CLUSTERING] Creating cluster groups
+2025-10-21 11:32:37,316 - services.clustering_service - INFO - [CLUSTERING] Grouping 3 embeddings into clusters...
+2025-10-21 11:32:37,317 - services.clustering_service - INFO - [CLUSTERING] Creating new cluster 1
+2025-10-21 11:32:37,317 - services.clustering_service - INFO - [CLUSTERING] Creating new cluster 0
+2025-10-21 11:32:37,318 - services.clustering_service - INFO - [CLUSTERING] Created 2 clusters
+2025-10-21 11:32:37,318 - services.clustering_service - INFO - [CLUSTERING] Cluster 1: 1 chunks
+2025-10-21 11:32:37,318 - services.clustering_service - INFO - [CLUSTERING] Cluster 0: 2 chunks
+2025-10-21 11:32:37,319 - services.clustering_service - INFO - Created 2 clusters
+2025-10-21 11:32:37,322 - services.clustering_service - INFO - [CLUSTERING] Logging clustering results...
+2025-10-21 11:32:37,322 - services.clustering_service - INFO - Clustering Results Summary:
+2025-10-21 11:32:37,323 - services.clustering_service - INFO -    - Total clusters: 2
+2025-10-21 11:32:37,324 - services.clustering_service - INFO -    - Total data points: 3
+2025-10-21 11:32:37,325 - services.clustering_service - INFO -    - Cluster sizes: [2, 1]
+2025-10-21 11:32:37,326 - services.clustering_service - INFO -    - Largest cluster: 2 chunks
+2025-10-21 11:32:37,326 - services.clustering_service - INFO -    - Smallest cluster: 1 chunks
+2025-10-21 11:32:37,327 - services.clustering_service - INFO -    - Average cluster size: 1.5 chunks
+2025-10-21 11:32:37,329 - services.clustering_service - INFO -    - Cluster 0 (2 chunks): F-08 – Ports Summary Dashboard
+Functional Specification: Add dashboard summarizing port status and u...
+2025-10-21 11:32:37,329 - services.clustering_service - INFO -    - Cluster 1 (1 chunks): BRD Content:
+
+Business Requirements Document (BRD)
+
+Project: eSW Charger Management and Analytics En...
+2025-10-21 11:32:37,332 - services.clustering_service - INFO -    - Overall silhouette score: 0.016
+2025-10-21 11:32:37,332 - services.clustering_service - INFO - [CLUSTERING] Successfully created 2 clusters
+2025-10-21 11:32:37,332 - main - INFO - Created 2 content clusters
+2025-10-21 11:32:37,436 - services.domain_aware_test_engine - INFO - [DOMAIN DETECTION] Scores: {<DomainType.ECOMMERCE: 'ecommerce'>: 2, <DomainType.BUSINESS_MANAGEMENT: 'business_management'>: 402, <DomainType.EV_CHARGING: 'ev_charging'>: 137, <DomainType.IOT_SMART_HOME: 'iot_smart_home'>: 56, <DomainType.FINTECH: 'fintech'>: 6, <DomainType.HEALTHCARE: 'healthcare'>: 0}
+2025-10-21 11:32:37,437 - services.domain_aware_test_engine - INFO - [DOMAIN DETECTION] Detected domain: business_management
+2025-10-21 11:32:37,437 - services.domain_aware_test_engine - INFO - Detected domain: business_management
+2025-10-21 11:32:37,437 - services.domain_aware_test_engine - INFO - [GAP ANALYSIS] Domain: business_management, Coverage: 1.00, Critical gaps: False, Missing: 0
+2025-10-21 11:32:37,468 - services.domain_aware_test_engine - INFO - [DOMAIN DETECTION] Scores: {<DomainType.ECOMMERCE: 'ecommerce'>: 0, <DomainType.BUSINESS_MANAGEMENT: 'business_management'>: 276, <DomainType.EV_CHARGING: 'ev_charging'>: 64, <DomainType.IOT_SMART_HOME: 'iot_smart_home'>: 22, <DomainType.FINTECH: 'fintech'>: 2, <DomainType.HEALTHCARE: 'healthcare'>: 0}
+2025-10-21 11:32:37,468 - services.domain_aware_test_engine - INFO - [DOMAIN DETECTION] Detected domain: business_management
+2025-10-21 11:32:37,505 - services.domain_aware_test_engine - WARNING - HybridTestRecommender not available: No module named 'services.hybrid_test_recommender'
+2025-10-21 11:32:37,520 - services.domain_aware_test_engine - INFO - [DOMAIN DETECTION] Scores: {<DomainType.ECOMMERCE: 'ecommerce'>: 2, <DomainType.BUSINESS_MANAGEMENT: 'business_management'>: 126, <DomainType.EV_CHARGING: 'ev_charging'>: 73, <DomainType.IOT_SMART_HOME: 'iot_smart_home'>: 34, <DomainType.FINTECH: 'fintech'>: 4, <DomainType.HEALTHCARE: 'healthcare'>: 0}
+2025-10-21 11:32:37,520 - services.domain_aware_test_engine - INFO - [DOMAIN DETECTION] Detected domain: business_management
+2025-10-21 11:32:37,546 - main - INFO - [DOMAIN-AWARE] Generated 19 domain-specific standard tests
+2025-10-21 11:32:37,546 - main - INFO - [DOMAIN-AWARE] Generated 11 domain-specific recommended tests
+2025-10-21 11:32:37,546 - main - INFO - [ATTRIBUTION] Enhancing recommendations with source attribution
+2025-10-21 11:32:37,546 - services.domain_aware_test_engine - WARNING - Semantic back-check failed: 'EmbeddingService' object has no attribute 'create_embedding'
+2025-10-21 11:32:37,546 - services.domain_aware_test_engine - WARNING - Semantic back-check failed: 'EmbeddingService' object has no attribute 'create_embedding'
+2025-10-21 11:32:37,546 - services.domain_aware_test_engine - WARNING - Semantic back-check failed: 'EmbeddingService' object has no attribute 'create_embedding'
+2025-10-21 11:32:37,547 - services.domain_aware_test_engine - WARNING - Semantic back-check failed: 'EmbeddingService' object has no attribute 'create_embedding'
+2025-10-21 11:32:37,547 - services.domain_aware_test_engine - WARNING - Semantic back-check failed: 'EmbeddingService' object has no attribute 'create_embedding'
+2025-10-21 11:32:37,547 - services.domain_aware_test_engine - WARNING - Semantic back-check failed: 'EmbeddingService' object has no attribute 'create_embedding'
+2025-10-21 11:32:37,547 - services.domain_aware_test_engine - WARNING - Semantic back-check failed: 'EmbeddingService' object has no attribute 'create_embedding'
+2025-10-21 11:32:37,547 - services.domain_aware_test_engine - WARNING - Semantic back-check failed: 'EmbeddingService' object has no attribute 'create_embedding'
+2025-10-21 11:32:37,547 - services.domain_aware_test_engine - WARNING - Semantic back-check failed: 'EmbeddingService' object has no attribute 'create_embedding'
+2025-10-21 11:32:37,547 - services.domain_aware_test_engine - WARNING - Semantic back-check failed: 'EmbeddingService' object has no attribute 'create_embedding'
+2025-10-21 11:32:37,547 - services.domain_aware_test_engine - WARNING - Semantic back-check failed: 'EmbeddingService' object has no attribute 'create_embedding'
+2025-10-21 11:32:37,547 - services.domain_aware_test_engine - WARNING - Semantic back-check failed: 'EmbeddingService' object has no attribute 'create_embedding'
+2025-10-21 11:32:37,547 - services.domain_aware_test_engine - WARNING - Semantic back-check failed: 'EmbeddingService' object has no attribute 'create_embedding'
+2025-10-21 11:32:37,547 - services.domain_aware_test_engine - WARNING - Semantic back-check failed: 'EmbeddingService' object has no attribute 'create_embedding'
+2025-10-21 11:32:37,547 - services.domain_aware_test_engine - WARNING - Semantic back-check failed: 'EmbeddingService' object has no attribute 'create_embedding'
+2025-10-21 11:32:37,547 - services.domain_aware_test_engine - WARNING - Semantic back-check failed: 'EmbeddingService' object has no attribute 'create_embedding'
+2025-10-21 11:32:37,547 - services.domain_aware_test_engine - WARNING - Semantic back-check failed: 'EmbeddingService' object has no attribute 'create_embedding'
+2025-10-21 11:32:37,547 - services.domain_aware_test_engine - WARNING - Semantic back-check failed: 'EmbeddingService' object has no attribute 'create_embedding'
+2025-10-21 11:32:37,547 - services.domain_aware_test_engine - WARNING - Semantic back-check failed: 'EmbeddingService' object has no attribute 'create_embedding'
+2025-10-21 11:32:37,547 - main - INFO - [ATTRIBUTION] Enhanced 19 standard tests with source attribution
+2025-10-21 11:32:37,547 - services.domain_aware_test_engine - WARNING - Semantic back-check failed: 'EmbeddingService' object has no attribute 'create_embedding'
+2025-10-21 11:32:37,547 - services.domain_aware_test_engine - WARNING - Semantic back-check failed: 'EmbeddingService' object has no attribute 'create_embedding'
+2025-10-21 11:32:37,547 - services.domain_aware_test_engine - WARNING - Semantic back-check failed: 'EmbeddingService' object has no attribute 'create_embedding'
+2025-10-21 11:32:37,547 - services.domain_aware_test_engine - WARNING - Semantic back-check failed: 'EmbeddingService' object has no attribute 'create_embedding'
+2025-10-21 11:32:37,548 - services.domain_aware_test_engine - WARNING - Semantic back-check failed: 'EmbeddingService' object has no attribute 'create_embedding'
+2025-10-21 11:32:37,548 - services.domain_aware_test_engine - WARNING - Semantic back-check failed: 'EmbeddingService' object has no attribute 'create_embedding'
+2025-10-21 11:32:37,548 - services.domain_aware_test_engine - WARNING - Semantic back-check failed: 'EmbeddingService' object has no attribute 'create_embedding'
+2025-10-21 11:32:37,548 - services.domain_aware_test_engine - WARNING - Semantic back-check failed: 'EmbeddingService' object has no attribute 'create_embedding'
+2025-10-21 11:32:37,548 - services.domain_aware_test_engine - WARNING - Semantic back-check failed: 'EmbeddingService' object has no attribute 'create_embedding'
+2025-10-21 11:32:37,548 - services.domain_aware_test_engine - WARNING - Semantic back-check failed: 'EmbeddingService' object has no attribute 'create_embedding'
+2025-10-21 11:32:37,548 - services.domain_aware_test_engine - WARNING - Semantic back-check failed: 'EmbeddingService' object has no attribute 'create_embedding'
+2025-10-21 11:32:37,548 - main - INFO - [ATTRIBUTION] Enhanced 11 recommended tests with source attribution
+2025-10-21 11:32:37,548 - main - INFO - [STEP3] Step 3: Intelligent Integration
+2025-10-21 11:32:37,548 - main - INFO - [COMPLETE] Intelligent analysis complete: 12 Standard + 12 Recommended tests
+2025-10-21 11:32:37,548 - main - INFO - [DEBUG] Using only domain-specific tests: 30 tests
+2025-10-21 11:32:37,548 - main - INFO - [DEBUG] Total tests to distribute: 30
+2025-10-21 11:32:37,548 - main - INFO - [DEBUG] Using 2 real clusters from domain analysis
+2025-10-21 11:32:37,549 - main - INFO - [DEBUG] Consolidated 13 unique tests (removed duplicates)
+2025-10-21 11:32:37,549 - main - INFO - [DEBUG] Test 'Role-Based Access Testing' has source_story: None
+2025-10-21 11:32:37,549 - main - INFO - [DEBUG] Test 'Functional Testing' has source_story: None
+2025-10-21 11:32:37,549 - main - INFO - [DEBUG] Test 'API Functional Testing' has source_story: None
+2025-10-21 11:32:37,549 - main - INFO - [DEBUG] Test 'UI Regression Testing' has source_story: None
+2025-10-21 11:32:37,549 - main - INFO - [DEBUG] Test 'Concurrency Testing' has source_story: None
+2025-10-21 11:32:37,549 - main - INFO - [DEBUG] Test 'Predictive Analytics Testing' has source_story: None
+2025-10-21 11:32:37,550 - main - INFO - [DEBUG] Test 'Smoke Testing' has source_story: None
+2025-10-21 11:32:37,550 - main - INFO - [DEBUG] Test 'Authentication Testing' has source_story: None
+2025-10-21 11:32:37,551 - main - INFO - [DEBUG] Test 'Input Validation Testing' has source_story: None
+2025-10-21 11:32:37,551 - main - INFO - [DEBUG] Test 'Advanced Security Testing' has source_story: None
+2025-10-21 11:32:37,551 - main - INFO - [DEBUG] Test 'Integration Contract Testing' has source_story: None
+2025-10-21 11:32:37,551 - main - INFO - [DEBUG] Test 'System Resilience Testing' has source_story: None
+2025-10-21 11:32:37,552 - main - INFO - [DEBUG] Test 'Accessibility Compliance Testing' has source_story: None
+2025-10-21 11:32:58,523 - main - INFO - Authenticating with Jira for project: Zuri Bot, epic: None, sprint: ZT Sprint 1, issueType: story
+2025-10-21 11:32:58,523 - main - INFO - Validating Jira authentication with endpoint: https://amzur.atlassian.net/rest/api/3/myself
+2025-10-21 11:32:59,983 - main - INFO - Jira authentication successful
+2025-10-21 11:32:59,984 - main - INFO - Using JQL query: project = "Zuri Bot" AND sprint = "ZT Sprint 1" AND issuetype = "story"
+2025-10-21 11:33:00,685 - main - INFO - Successfully fetched 5 Jira issues
+2025-10-21 11:33:00,704 - main - INFO - Processing 5 Jira issues for session session-1761026578519-qof28nxfvl
+2025-10-21 11:33:00,705 - main - INFO - Converted 5 Jira issues to user stories
+2025-10-21 11:33:02,890 - main - INFO - Received comparison request
+2025-10-21 11:33:02,890 - main - INFO - Using 5 pre-processed user stories for comparison
+2025-10-21 11:33:02,890 - main - INFO - Creating direct comparison workflow
+2025-10-21 11:33:02,891 - main - INFO - Direct comparison workflow created successfully
+2025-10-21 11:33:02,893 - main - INFO - Analyzing BRD content with Gemini (direct comparison)
+2025-10-21 11:33:09,489 - main - INFO - BRD analysis completed successfully with Gemini
+2025-10-21 11:33:09,490 - main - INFO - Comparing BRD analysis with pre-processed user stories using Gemini
+2025-10-21 11:33:15,122 - main - INFO - Successfully extracted 3 missing requirements
+2025-10-21 11:33:15,122 - main - INFO - Comparison analysis completed successfully with Gemini
+2025-10-21 11:33:15,124 - main - INFO - Storing comparison results in Supabase
+2025-10-21 11:33:15,125 - main - WARNING - Supabase not available, skipping storage
+2025-10-21 11:33:15,125 - main - INFO - Performing comprehensive gap analysis and coverage calculation
+2025-10-21 11:33:15,125 - main - ERROR - Gap analysis failed: sequence item 0: expected str instance, dict found
+2025-10-21 11:33:15,125 - main - INFO - Comparison completed successfully
+2025-10-21 11:34:14,291 - main - INFO - Received comparison request
+2025-10-21 11:34:14,291 - main - INFO - Using 5 pre-processed user stories for comparison
+2025-10-21 11:34:14,291 - main - INFO - Creating direct comparison workflow
+2025-10-21 11:34:14,292 - main - INFO - Direct comparison workflow created successfully
+2025-10-21 11:34:14,295 - main - INFO - Analyzing BRD content with Gemini (direct comparison)
+2025-10-21 11:34:21,630 - main - INFO - BRD analysis completed successfully with Gemini
+2025-10-21 11:34:21,632 - main - INFO - Comparing BRD analysis with pre-processed user stories using Gemini
+2025-10-21 11:34:25,012 - main - INFO - Successfully extracted 1 missing requirements
+2025-10-21 11:34:25,013 - main - INFO - Comparison analysis completed successfully with Gemini
+2025-10-21 11:34:25,014 - main - INFO - Storing comparison results in Supabase
+2025-10-21 11:34:25,014 - main - WARNING - Supabase not available, skipping storage
+2025-10-21 11:34:25,014 - main - INFO - Performing comprehensive gap analysis and coverage calculation
+2025-10-21 11:34:25,015 - main - ERROR - Gap analysis failed: sequence item 0: expected str instance, dict found
+2025-10-21 11:34:25,015 - main - INFO - Comparison completed successfully
+2025-10-21 11:35:52,600 - main - WARNING - Failed to initialize Supabase client: Client.__init__() got an unexpected keyword argument 'proxy'
+2025-10-21 11:35:52,600 - main - INFO - Gemini AI API key configured successfully
+2025-10-21 11:35:52,607 - services.document_processor - INFO - Document processor initialized with semantic chunking capabilities
+2025-10-21 11:35:52,607 - services.embedding_service - WARNING - sentence-transformers not available
+2025-10-21 11:35:52,607 - services.clustering_service - INFO - Clustering service initialized with OPTIMIZED parameters for fewer API calls
+2025-10-21 11:36:22,150 - main - WARNING - Failed to initialize Supabase client: Client.__init__() got an unexpected keyword argument 'proxy'
+2025-10-21 11:36:22,150 - main - INFO - Gemini AI API key configured successfully
+2025-10-21 11:36:22,169 - services.document_processor - INFO - Document processor initialized with semantic chunking capabilities
+2025-10-21 11:36:22,170 - services.embedding_service - WARNING - sentence-transformers not available
+2025-10-21 11:36:22,170 - services.clustering_service - INFO - Clustering service initialized with OPTIMIZED parameters for fewer API calls
+2025-10-21 11:36:51,737 - main - WARNING - Failed to initialize Supabase client: Client.__init__() got an unexpected keyword argument 'proxy'
+2025-10-21 11:36:51,737 - main - INFO - Gemini AI API key configured successfully
+2025-10-21 11:36:51,759 - services.document_processor - INFO - Document processor initialized with semantic chunking capabilities
+2025-10-21 11:36:51,759 - services.embedding_service - WARNING - sentence-transformers not available
+2025-10-21 11:36:51,759 - services.clustering_service - INFO - Clustering service initialized with OPTIMIZED parameters for fewer API calls
+2025-10-21 11:37:02,766 - main - WARNING - Failed to initialize Supabase client: Client.__init__() got an unexpected keyword argument 'proxy'
+2025-10-21 11:37:02,766 - main - INFO - Gemini AI API key configured successfully
+2025-10-21 11:37:02,777 - services.document_processor - INFO - Document processor initialized with semantic chunking capabilities
+2025-10-21 11:37:02,777 - services.embedding_service - WARNING - sentence-transformers not available
+2025-10-21 11:37:02,777 - services.clustering_service - INFO - Clustering service initialized with OPTIMIZED parameters for fewer API calls
+2025-10-21 11:37:49,266 - main - INFO - Authenticating with Jira for project: Zuri Bot, epic: None, sprint: ZT Sprint 1, issueType: all
+2025-10-21 11:37:49,266 - main - INFO - Validating Jira authentication with endpoint: https://amzur.atlassian.net/rest/api/3/myself
+2025-10-21 11:37:50,647 - main - INFO - Jira authentication successful
+2025-10-21 11:37:50,647 - main - INFO - Using JQL query: project = "Zuri Bot" AND sprint = "ZT Sprint 1" AND issuetype = "all"
+2025-10-21 11:37:51,428 - main - INFO - Successfully fetched 0 Jira issues
+2025-10-21 11:37:52,850 - main - INFO - Authenticating with Jira for project: Zuri Bot, epic: None, sprint: ZT Sprint 1, issueType: story
+2025-10-21 11:37:52,851 - main - INFO - Validating Jira authentication with endpoint: https://amzur.atlassian.net/rest/api/3/myself
+2025-10-21 11:37:53,650 - main - INFO - Jira authentication successful
+2025-10-21 11:37:53,650 - main - INFO - Using JQL query: project = "Zuri Bot" AND sprint = "ZT Sprint 1" AND issuetype = "story"
+2025-10-21 11:37:54,369 - main - INFO - Successfully fetched 5 Jira issues
+2025-10-21 11:37:54,388 - main - INFO - Processing 5 Jira issues for session session-1761026872846-zfnzbcvw9or
+2025-10-21 11:37:54,388 - main - INFO - Converted 5 Jira issues to user stories
+2025-10-21 11:37:57,844 - main - INFO - Received comparison request
+2025-10-21 11:37:57,845 - main - INFO - Using 5 pre-processed user stories for comparison
+2025-10-21 11:37:57,845 - main - INFO - Creating direct comparison workflow
+2025-10-21 11:37:57,846 - main - INFO - Direct comparison workflow created successfully
+2025-10-21 11:37:57,849 - main - INFO - Analyzing BRD content with Gemini (direct comparison)
+2025-10-21 11:38:07,275 - main - INFO - BRD analysis completed successfully with Gemini
+2025-10-21 11:38:07,276 - main - INFO - Comparing BRD analysis with pre-processed user stories using Gemini
+2025-10-21 11:38:14,134 - main - INFO - Successfully extracted 3 missing requirements
+2025-10-21 11:38:14,134 - main - INFO - Comparison analysis completed successfully with Gemini
+2025-10-21 11:38:14,135 - main - INFO - Storing comparison results in Supabase
+2025-10-21 11:38:14,135 - main - WARNING - Supabase not available, skipping storage
+2025-10-21 11:38:14,135 - main - INFO - Performing comprehensive gap analysis and coverage calculation
+2025-10-21 11:38:14,136 - main - ERROR - Gap analysis failed: sequence item 0: expected str instance, dict found
+2025-10-21 11:38:14,136 - main - INFO - Comparison completed successfully
+2025-10-21 11:38:44,560 - main - WARNING - Failed to initialize Supabase client: Client.__init__() got an unexpected keyword argument 'proxy'
+2025-10-21 11:38:44,561 - main - INFO - Gemini AI API key configured successfully
+2025-10-21 11:38:44,568 - services.document_processor - INFO - Document processor initialized with semantic chunking capabilities
+2025-10-21 11:38:44,568 - services.embedding_service - WARNING - sentence-transformers not available
+2025-10-21 11:38:44,568 - services.clustering_service - INFO - Clustering service initialized with OPTIMIZED parameters for fewer API calls
+2025-10-21 11:38:52,082 - main - INFO - Received comparison request
+2025-10-21 11:38:52,083 - main - INFO - Using 5 pre-processed user stories for comparison
+2025-10-21 11:38:52,083 - main - INFO - Creating direct comparison workflow
+2025-10-21 11:38:52,084 - main - INFO - Direct comparison workflow created successfully
+2025-10-21 11:38:52,089 - main - INFO - Analyzing BRD content with Gemini (direct comparison)
+2025-10-21 11:38:52,089 - main - ERROR - Gemini API error during BRD analysis: get_deterministic_ai_config() got an unexpected keyword argument 'temperature'
+2025-10-21 11:38:52,091 - main - ERROR - Agent returned error: Gemini API error during BRD analysis: get_deterministic_ai_config() got an unexpected keyword argument 'temperature'
+2025-10-21 11:38:52,091 - main - ERROR - HTTP exception in comparison: Gemini API error during BRD analysis: get_deterministic_ai_config() got an unexpected keyword argument 'temperature'
+2025-10-21 11:39:03,486 - main - INFO - Received comparison request
+2025-10-21 11:39:03,486 - main - INFO - Using 5 pre-processed user stories for comparison
+2025-10-21 11:39:03,487 - main - INFO - Creating direct comparison workflow
+2025-10-21 11:39:03,487 - main - INFO - Direct comparison workflow created successfully
+2025-10-21 11:39:03,490 - main - INFO - Analyzing BRD content with Gemini (direct comparison)
+2025-10-21 11:39:03,490 - main - ERROR - Gemini API error during BRD analysis: get_deterministic_ai_config() got an unexpected keyword argument 'temperature'
+2025-10-21 11:39:03,492 - main - ERROR - Agent returned error: Gemini API error during BRD analysis: get_deterministic_ai_config() got an unexpected keyword argument 'temperature'
+2025-10-21 11:39:03,492 - main - ERROR - HTTP exception in comparison: Gemini API error during BRD analysis: get_deterministic_ai_config() got an unexpected keyword argument 'temperature'
+2025-10-21 11:39:19,312 - main - WARNING - Failed to initialize Supabase client: Client.__init__() got an unexpected keyword argument 'proxy'
+2025-10-21 11:39:19,312 - main - INFO - Gemini AI API key configured successfully
+2025-10-21 11:39:19,319 - services.document_processor - INFO - Document processor initialized with semantic chunking capabilities
+2025-10-21 11:39:19,319 - services.embedding_service - WARNING - sentence-transformers not available
+2025-10-21 11:39:19,319 - services.clustering_service - INFO - Clustering service initialized with OPTIMIZED parameters for fewer API calls
+2025-10-21 11:39:22,308 - main - INFO - Received comparison request
+2025-10-21 11:39:22,308 - main - INFO - Using 5 pre-processed user stories for comparison
+2025-10-21 11:39:22,308 - main - INFO - Creating direct comparison workflow
+2025-10-21 11:39:22,309 - main - INFO - Direct comparison workflow created successfully
+2025-10-21 11:39:22,314 - main - INFO - Analyzing BRD content with Gemini (direct comparison)
+2025-10-21 11:39:22,315 - main - ERROR - Gemini API error during BRD analysis: get_deterministic_ai_config() got an unexpected keyword argument 'temperature'
+2025-10-21 11:39:22,316 - main - ERROR - Agent returned error: Gemini API error during BRD analysis: get_deterministic_ai_config() got an unexpected keyword argument 'temperature'
+2025-10-21 11:39:22,317 - main - ERROR - HTTP exception in comparison: Gemini API error during BRD analysis: get_deterministic_ai_config() got an unexpected keyword argument 'temperature'
+2025-10-21 11:39:41,919 - main - WARNING - Failed to initialize Supabase client: Client.__init__() got an unexpected keyword argument 'proxy'
+2025-10-21 11:39:41,919 - main - INFO - Gemini AI API key configured successfully
+2025-10-21 11:39:41,926 - services.document_processor - INFO - Document processor initialized with semantic chunking capabilities
+2025-10-21 11:39:41,926 - services.embedding_service - WARNING - sentence-transformers not available
+2025-10-21 11:39:41,926 - services.clustering_service - INFO - Clustering service initialized with OPTIMIZED parameters for fewer API calls
+2025-10-21 11:39:41,939 - main - INFO - Received comparison request
+2025-10-21 11:39:41,939 - main - INFO - Using 5 pre-processed user stories for comparison
+2025-10-21 11:39:41,939 - main - INFO - Creating direct comparison workflow
+2025-10-21 11:39:41,939 - main - INFO - Direct comparison workflow created successfully
+2025-10-21 11:39:41,941 - main - INFO - Analyzing BRD content with Gemini (direct comparison)
+2025-10-21 11:39:41,941 - main - ERROR - Gemini API error during BRD analysis: get_deterministic_ai_config() got an unexpected keyword argument 'temperature'
+2025-10-21 11:39:41,941 - main - ERROR - Agent returned error: Gemini API error during BRD analysis: get_deterministic_ai_config() got an unexpected keyword argument 'temperature'
+2025-10-21 11:39:41,942 - main - ERROR - HTTP exception in comparison: Gemini API error during BRD analysis: get_deterministic_ai_config() got an unexpected keyword argument 'temperature'
+2025-10-21 11:41:33,338 - main - INFO - Received comparison request
+2025-10-21 11:41:33,338 - main - INFO - Using 5 pre-processed user stories for comparison
+2025-10-21 11:41:33,339 - main - INFO - Creating direct comparison workflow
+2025-10-21 11:41:33,339 - main - INFO - Direct comparison workflow created successfully
+2025-10-21 11:41:33,343 - main - INFO - Analyzing BRD content with Gemini (direct comparison)
+2025-10-21 11:41:33,343 - main - ERROR - Gemini API error during BRD analysis: get_deterministic_ai_config() got an unexpected keyword argument 'temperature'
+2025-10-21 11:41:33,345 - main - ERROR - Agent returned error: Gemini API error during BRD analysis: get_deterministic_ai_config() got an unexpected keyword argument 'temperature'
+2025-10-21 11:41:33,345 - main - ERROR - HTTP exception in comparison: Gemini API error during BRD analysis: get_deterministic_ai_config() got an unexpected keyword argument 'temperature'
+2025-10-21 11:42:23,137 - main - WARNING - Failed to initialize Supabase client: Client.__init__() got an unexpected keyword argument 'proxy'
+2025-10-21 11:42:23,137 - main - INFO - Gemini AI API key configured successfully
+2025-10-21 11:42:23,143 - services.document_processor - INFO - Document processor initialized with semantic chunking capabilities
+2025-10-21 11:42:23,143 - services.embedding_service - WARNING - sentence-transformers not available
+2025-10-21 11:42:23,143 - services.clustering_service - INFO - Clustering service initialized with OPTIMIZED parameters for fewer API calls
+2025-10-21 11:42:29,692 - main - INFO - Received comparison request
+2025-10-21 11:42:29,692 - main - INFO - Using 5 pre-processed user stories for comparison
+2025-10-21 11:42:29,692 - main - INFO - Creating direct comparison workflow
+2025-10-21 11:42:29,693 - main - INFO - Direct comparison workflow created successfully
+2025-10-21 11:42:29,698 - main - INFO - Analyzing BRD content with Gemini (direct comparison)
+2025-10-21 11:42:38,168 - main - INFO - BRD analysis completed successfully with Gemini
+2025-10-21 11:42:38,170 - main - INFO - Comparing BRD analysis with pre-processed user stories using Gemini
+2025-10-21 11:42:41,336 - main - INFO - Successfully extracted 1 missing requirements
+2025-10-21 11:42:41,336 - main - INFO - Comparison analysis completed successfully with Gemini
+2025-10-21 11:42:41,338 - main - INFO - Storing comparison results in Supabase
+2025-10-21 11:42:41,338 - main - WARNING - Supabase not available, skipping storage
+2025-10-21 11:42:41,338 - main - INFO - Performing comprehensive gap analysis and coverage calculation
+2025-10-21 11:42:41,338 - main - ERROR - Gap analysis failed: sequence item 0: expected str instance, dict found
+2025-10-21 11:42:41,338 - main - INFO - Comparison completed successfully
+2025-10-21 11:43:19,901 - main - WARNING - Failed to initialize Supabase client: Client.__init__() got an unexpected keyword argument 'proxy'
+2025-10-21 11:43:19,901 - main - INFO - Gemini AI API key configured successfully
+2025-10-21 11:43:19,908 - services.document_processor - INFO - Document processor initialized with semantic chunking capabilities
+2025-10-21 11:43:19,908 - services.embedding_service - WARNING - sentence-transformers not available
+2025-10-21 11:43:19,908 - services.clustering_service - INFO - Clustering service initialized with OPTIMIZED parameters for fewer API calls
+2025-10-21 11:43:19,921 - main - INFO - Received comparison request
+2025-10-21 11:43:19,921 - main - INFO - Using 5 pre-processed user stories for comparison
+2025-10-21 11:43:19,921 - main - INFO - Creating direct comparison workflow
+2025-10-21 11:43:19,922 - main - INFO - Direct comparison workflow created successfully
+2025-10-21 11:43:19,923 - main - INFO - Analyzing BRD content with Gemini (direct comparison)
+2025-10-21 11:43:27,978 - main - INFO - BRD analysis completed successfully with Gemini
+2025-10-21 11:43:27,979 - main - INFO - Comparing BRD analysis with pre-processed user stories using Gemini
+2025-10-21 11:43:31,807 - main - INFO - Successfully extracted 3 missing requirements
+2025-10-21 11:43:31,807 - main - INFO - Comparison analysis completed successfully with Gemini
+2025-10-21 11:43:31,809 - main - INFO - Storing comparison results in Supabase
+2025-10-21 11:43:31,809 - main - WARNING - Supabase not available, skipping storage
+2025-10-21 11:43:31,809 - main - INFO - Performing comprehensive gap analysis and coverage calculation
+2025-10-21 11:43:31,809 - main - ERROR - Gap analysis failed: sequence item 0: expected str instance, dict found
+2025-10-21 11:43:31,809 - main - INFO - Comparison completed successfully
+2025-10-21 11:43:34,465 - main - INFO - Received comparison request
+2025-10-21 11:43:34,465 - main - INFO - Using 5 pre-processed user stories for comparison
+2025-10-21 11:43:34,466 - main - INFO - Creating direct comparison workflow
+2025-10-21 11:43:34,466 - main - INFO - Direct comparison workflow created successfully
+2025-10-21 11:43:34,470 - main - INFO - Analyzing BRD content with Gemini (direct comparison)
+2025-10-21 11:43:41,423 - main - INFO - BRD analysis completed successfully with Gemini
+2025-10-21 11:43:41,425 - main - INFO - Comparing BRD analysis with pre-processed user stories using Gemini
+2025-10-21 11:43:46,410 - main - INFO - Successfully extracted 1 missing requirements
+2025-10-21 11:43:46,410 - main - INFO - Comparison analysis completed successfully with Gemini
+2025-10-21 11:43:46,412 - main - INFO - Storing comparison results in Supabase
+2025-10-21 11:43:46,412 - main - WARNING - Supabase not available, skipping storage
+2025-10-21 11:43:46,412 - main - INFO - Performing comprehensive gap analysis and coverage calculation
+2025-10-21 11:43:46,412 - main - ERROR - Gap analysis failed: sequence item 0: expected str instance, dict found
+2025-10-21 11:43:46,412 - main - INFO - Comparison completed successfully

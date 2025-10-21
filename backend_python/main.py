@@ -1612,10 +1612,11 @@ async def compare_brd_stories(request: ComparisonRequest):
             "missing_requirements": result.get('missing_requirements', [])
         }
         
-        # Perform gap analysis to detect missing critical requirements
+        # Perform comprehensive gap analysis and coverage calculation
         try:
-            logger.info("Performing gap analysis on combined content")
+            logger.info("Performing comprehensive gap analysis and coverage calculation")
             combined_content = request.brd_content
+            user_stories_text = ""
             if result.get('user_stories'):
                 user_stories_text = "\n".join([story.get('description', '') for story in result.get('user_stories', [])])
                 combined_content += "\n" + user_stories_text
@@ -1629,15 +1630,94 @@ async def compare_brd_stories(request: ComparisonRequest):
             domain = domain_aware_engine.detect_domain(combined_content)
             gap_analysis = domain_aware_engine.perform_gap_analysis(combined_content, domain)
             
+            # Calculate coverage percentage based on missing requirements
+            missing_reqs = result.get('missing_requirements', [])
+            
+            # Filter out generic "no specific" entries from both missing_reqs and gap_analysis
+            if missing_reqs:
+                actual_missing_reqs = [req for req in missing_reqs if not req.lower().startswith('no specific')]
+            else:
+                actual_missing_reqs = []
+            
+            # Also check gap_analysis missing requirements
+            gap_missing_reqs = gap_analysis.get("missing_requirements", [])
+            if gap_missing_reqs:
+                gap_actual_missing = [req for req in gap_missing_reqs if not req.lower().startswith('no specific')]
+            else:
+                gap_actual_missing = []
+            
+            # Use the larger set of missing requirements for accurate calculation
+            all_missing_reqs = list(set(actual_missing_reqs + gap_actual_missing))
+            
+            # Check if the comparison result explicitly states no missing requirements
+            comparison_text = result.get('comparison_result', '').lower()
+            has_no_missing_statement = any(phrase in comparison_text for phrase in [
+                'no missing requirements found',
+                'no specific missing requirements',
+                'all brd functional requirements are addressed',
+                'all requirements appear to be covered'
+            ])
+            
+            # If explicit "no missing requirements" statement, override missing count
+            if has_no_missing_statement and len(all_missing_reqs) == 0:
+                missing_count = 0
+                coverage_percentage = 100
+            elif has_no_missing_statement:
+                # Statement says no missing requirements, but list has some - trust the statement
+                missing_count = 0
+                coverage_percentage = 100
+                all_missing_reqs = []  # Clear the list as the analysis says no missing requirements
+            else:
+                missing_count = len(all_missing_reqs)
+                
+                # Estimate total requirements based on domain and content analysis
+                if domain == domain_aware_engine.DomainType.EV_CHARGING:
+                    total_brd_requirements = 15
+                elif domain == domain_aware_engine.DomainType.BUSINESS_MANAGEMENT:
+                    total_brd_requirements = 12
+                elif domain == domain_aware_engine.DomainType.FINTECH:
+                    total_brd_requirements = 18
+                else:
+                    total_brd_requirements = 10  # Generic baseline
+                
+                # Calculate coverage percentage
+                if missing_count == 0:
+                    coverage_percentage = 100  # Perfect coverage when no missing requirements
+                else:
+                    coverage_percentage = max(0, round(((total_brd_requirements - missing_count) / total_brd_requirements) * 100))
+            
+            # Determine coverage status and message
+            if coverage_percentage == 100:
+                coverage_status = "complete"
+                coverage_message = "Perfect coverage! All BRD requirements are addressed by user stories."
+                has_gaps_final = False  # Override gap analysis if coverage is perfect
+            elif coverage_percentage >= 80:
+                coverage_status = "good"
+                coverage_message = f"Good coverage with {missing_count} missing requirement(s) to address."
+                has_gaps_final = True
+            elif coverage_percentage >= 60:
+                coverage_status = "moderate"
+                coverage_message = f"Moderate coverage with {missing_count} missing requirement(s) requiring attention."
+                has_gaps_final = True
+            else:
+                coverage_status = "poor"
+                coverage_message = f"Poor coverage with {missing_count} critical missing requirement(s)."
+                has_gaps_final = True
+            
             response_data["gap_analysis"] = {
-                "has_gaps": gap_analysis["has_gaps"],
-                "missing_requirements": gap_analysis["missing_requirements"],
+                "has_gaps": has_gaps_final,
+                "missing_requirements": all_missing_reqs,  # Use consolidated missing requirements
                 "gap_details": gap_analysis["gap_details"],
                 "domain": domain.value,
-                "content_hash": content_hash  # Include hash for debugging
+                "content_hash": content_hash,
+                "coverage_percentage": coverage_percentage,
+                "coverage_status": coverage_status,
+                "coverage_message": coverage_message,
+                "total_requirements_found": total_brd_requirements,
+                "missing_count": missing_count
             }
             
-            logger.info(f"Gap analysis completed - hash: {content_hash}, has_gaps: {gap_analysis['has_gaps']}, missing: {len(gap_analysis['missing_requirements'])}")
+            logger.info(f"Gap analysis completed - hash: {content_hash}, coverage: {coverage_percentage}%, missing: {missing_count}")
             
         except Exception as e:
             logger.error(f"Gap analysis failed: {str(e)}")
@@ -1646,7 +1726,12 @@ async def compare_brd_stories(request: ComparisonRequest):
                 "has_gaps": False,
                 "missing_requirements": [],
                 "gap_details": "Gap analysis not available",
-                "domain": "unknown"
+                "domain": "unknown",
+                "coverage_percentage": 0,
+                "coverage_status": "unknown",
+                "coverage_message": "Gap analysis not available",
+                "total_requirements_found": 0,
+                "missing_count": 0
             }
         
         if "warning" in result:

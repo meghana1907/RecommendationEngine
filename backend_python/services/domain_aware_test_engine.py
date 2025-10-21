@@ -1760,15 +1760,34 @@ class DomainAwareTestEngine:
 
     def perform_gap_analysis(self, content: str, domain: DomainType) -> Dict[str, Any]:
         """
-        Perform gap analysis to detect missing requirements.
+        Perform comprehensive gap analysis to detect missing requirements.
         Returns dict with 'has_gaps', 'missing_requirements', and 'gap_details'.
         """
         if domain == DomainType.GENERIC or domain not in self.domain_patterns:
-            # For generic domains, assume no critical gaps
+            # For generic domains, perform basic content analysis
+            missing_requirements = []
+            
+            # Check for basic requirements in any domain
+            basic_checks = {
+                "User Authentication": ['login', 'signin', 'auth', 'authentication', 'user account'],
+                "Data Management": ['create', 'update', 'delete', 'manage', 'data', 'crud'],
+                "User Interface": ['ui', 'interface', 'dashboard', 'screen', 'page', 'view'],
+                "Error Handling": ['error', 'validation', 'exception', 'handling', 'failure']
+            }
+            
+            content_lower = content.lower()
+            
+            for req_name, keywords in basic_checks.items():
+                if not any(keyword in content_lower for keyword in keywords):
+                    missing_requirements.append(req_name)
+            
+            # For generic domains, be more lenient
+            has_gaps = len(missing_requirements) > 2  # Only flag if many requirements are missing
+            
             return {
-                'has_gaps': False,
-                'missing_requirements': [],
-                'gap_details': "Generic domain - no specific requirements validation"
+                'has_gaps': has_gaps,
+                'missing_requirements': missing_requirements,
+                'gap_details': f"Basic analysis - {len(missing_requirements)} potential gaps identified" if has_gaps else "Basic analysis - content appears adequate"
             }
             
         pattern = self.domain_patterns[domain]
@@ -1779,9 +1798,16 @@ class DomainAwareTestEngine:
         # Define critical requirements per domain
         critical_requirements = self._get_critical_requirements_for_domain(domain)
         
+        # Track found requirements for better analysis
+        total_critical_requirements = 0
+        found_requirements = 0
+        
         # Check for missing critical requirements
         for req_category, requirements in critical_requirements.items():
-            found_requirements = []
+            category_found = 0
+            category_total = len(requirements)
+            total_critical_requirements += category_total
+            
             missing_in_category = []
             
             for req in requirements:
@@ -1790,25 +1816,38 @@ class DomainAwareTestEngine:
                 req_found = any(keyword.lower() in content_lower for keyword in req_keywords)
                 
                 if req_found:
-                    found_requirements.append(req['name'])
+                    found_requirements += 1
+                    category_found += 1
                 else:
                     missing_in_category.append(req['name'])
                     missing_requirements.append(f"{req_category}: {req['name']}")
             
             if missing_in_category:
                 gap_details.append(f"Missing {req_category}: {', '.join(missing_in_category)}")
+            else:
+                gap_details.append(f"Complete {req_category}: All requirements found")
+        
+        # Calculate coverage percentage
+        coverage_ratio = found_requirements / total_critical_requirements if total_critical_requirements > 0 else 1.0
         
         # Determine if gaps are critical enough to block testing recommendations
-        has_critical_gaps = len(missing_requirements) > 0
+        # More lenient threshold - only block if less than 50% coverage
+        has_critical_gaps = coverage_ratio < 0.5
         
-        gap_summary = "; ".join(gap_details) if gap_details else "No critical gaps detected"
+        if not has_critical_gaps and not missing_requirements:
+            gap_summary = "All critical requirements are adequately covered"
+        else:
+            gap_summary = "; ".join(gap_details) if gap_details else "No critical gaps detected"
         
-        self.logger.info(f"[GAP ANALYSIS] Domain: {domain.value}, Has gaps: {has_critical_gaps}, Missing: {missing_requirements}")
+        self.logger.info(f"[GAP ANALYSIS] Domain: {domain.value}, Coverage: {coverage_ratio:.2f}, Critical gaps: {has_critical_gaps}, Missing: {len(missing_requirements)}")
         
         return {
             'has_gaps': has_critical_gaps,
             'missing_requirements': missing_requirements,
-            'gap_details': gap_summary
+            'gap_details': gap_summary,
+            'coverage_ratio': coverage_ratio,
+            'total_requirements_checked': total_critical_requirements,
+            'found_requirements': found_requirements
         }
 
     def _get_critical_requirements_for_domain(self, domain: DomainType) -> Dict[str, List[Dict]]:

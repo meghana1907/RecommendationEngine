@@ -219,8 +219,12 @@ function App() {
   };
 
   const generateTestRecommendations = async () => {
-    // Check if there are missing requirements before generating
-    if (comparisonResult?.gap_analysis?.has_gaps || extractMissingRequirements().length > 0) {
+    // Check if there are missing requirements before generating (with proper coverage checking)
+    const hasRealMissingRequirements = extractMissingRequirements().length > 0;
+    const hasPerfectCoverage = comparisonResult?.gap_analysis?.coverage_percentage === 100;
+    const hasGaps = comparisonResult?.gap_analysis?.has_gaps === true;
+    
+    if (hasGaps && hasRealMissingRequirements && !hasPerfectCoverage) {
       toast.error('Cannot generate test recommendations while there are missing requirements. Please address the gaps first.');
       return;
     }
@@ -283,6 +287,21 @@ function App() {
     
     const result = comparisonResult.comparison_result;
     
+    // Check if the result explicitly states no missing requirements
+    const noMissingStatements = [
+      'no missing requirements found',
+      'no specific missing requirements',
+      'all brd functional requirements are addressed',
+      'all requirements appear to be covered'
+    ];
+    
+    const resultLower = result.toLowerCase();
+    const hasNoMissingStatement = noMissingStatements.some(statement => resultLower.includes(statement));
+    
+    if (hasNoMissingStatement) {
+      return []; // Return empty array when analysis explicitly states no missing requirements
+    }
+    
     const missingReqsHeader = "## MISSING REQUIREMENTS";
     if (result.includes(missingReqsHeader)) {
       const missingSection = result.split(missingReqsHeader)[1];
@@ -295,7 +314,8 @@ function App() {
         const trimmedLine = line.trim();
         if (trimmedLine.match(/^\d+\.\s+/)) {
           const requirement = trimmedLine.replace(/^\d+\.\s+/, '').trim();
-          if (requirement && !requirement.toLowerCase().includes('no specific missing requirements')) {
+          if (requirement && !requirement.toLowerCase().includes('no specific missing requirements') && 
+              !requirement.toLowerCase().includes('no missing requirements found')) {
             missingReqs.push(requirement);
           }
         }
@@ -664,6 +684,68 @@ function App() {
             <div className="results-section">
               <h2>Gap Analysis Results</h2>
               
+              {/* Requirements Coverage Analysis Section */}
+              <div className="coverage-analysis-section">
+                <h3>Requirements Coverage Analysis</h3>
+                <div className="coverage-summary">
+                  <div className="coverage-card">
+                    <div className={`coverage-percentage ${
+                      (comparisonResult?.gap_analysis?.coverage_percentage === 100 || 
+                       (extractMissingRequirements().length === 0 && comparisonResult?.comparison_result)) 
+                        ? 'complete' 
+                        : comparisonResult?.gap_analysis?.coverage_status || 'unknown'
+                    }`}>
+                      {(comparisonResult?.gap_analysis?.coverage_percentage === 100 || 
+                        extractMissingRequirements().length === 0) 
+                        ? '100%'
+                        : comparisonResult?.gap_analysis?.coverage_percentage !== undefined 
+                          ? `${comparisonResult.gap_analysis.coverage_percentage}%`
+                          : '0%'
+                      }
+                    </div>
+                    <div className="coverage-label">Coverage</div>
+                  </div>
+                  
+                  <div className="coverage-details">
+                    <div className="coverage-message">
+                      {(comparisonResult?.gap_analysis?.coverage_percentage === 100 || extractMissingRequirements().length === 0)
+                        ? "Perfect coverage! All BRD requirements are addressed by user stories."
+                        : comparisonResult?.gap_analysis?.coverage_message || 'Gap analysis not available'
+                      }
+                    </div>
+                    
+                    {(comparisonResult?.gap_analysis?.coverage_percentage === 100 || extractMissingRequirements().length === 0) ? (
+                      <div className="coverage-status-good">
+                        <span className="status-icon">✅</span>
+                        <span>Perfect coverage! All BRD requirements are addressed.</span>
+                      </div>
+                    ) : extractMissingRequirements().length > 0 ? (
+                      <div className="coverage-status-missing">
+                        <span className="status-icon">⚠️</span>
+                        <span>The following BRD requirements need attention:</span>
+                        <div className="missing-requirements-preview">
+                          {extractMissingRequirements().slice(0, 3).map((req, idx) => (
+                            <div key={idx} className="missing-req-item">
+                              • {req.length > 80 ? req.substring(0, 80) + '...' : req}
+                            </div>
+                          ))}
+                          {extractMissingRequirements().length > 3 && (
+                            <div className="more-missing">
+                              ...and {extractMissingRequirements().length - 3} more
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="coverage-status-unknown">
+                        <span className="status-icon">ℹ️</span>
+                        <span>Coverage analysis in progress...</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+              
               <div className="results-tabs">
                 <button 
                   className={`tab-button ${activeTab === 'full' ? 'active' : ''}`} 
@@ -780,7 +862,9 @@ function App() {
               )}
 
               {/* Test Recommendations Trigger or Gap Analysis Warning */}
-              {(comparisonResult?.gap_analysis?.has_gaps || extractMissingRequirements().length > 0) ? (
+              {(comparisonResult?.gap_analysis?.has_gaps === true && 
+                comparisonResult?.gap_analysis?.coverage_percentage !== 100 &&
+                extractMissingRequirements().length > 0) ? (
                 // Show gap analysis warning instead of button - NO purple background
                 <div className="gap-analysis-warning">
                   <div className="gap-warning-header">
@@ -824,17 +908,22 @@ function App() {
                   </div>
                 </div>
               ) : (
-                // Only show button if NO gaps detected anywhere
+                // Show button when NO gaps detected, OR when coverage is 100%, OR when no missing requirements
                 !(testRecommendations?.gap_analysis?.has_gaps || testRecommendations?.has_gap_issues) && (
                   <div className="test-recommendations-trigger">
-                    <h3>Generate Test Recommendations</h3>
-                    <p>Based on the gap analysis, generate intelligent test recommendations using AI.</p>
+                    <h3>✅ Ready for Test Recommendations</h3>
+                    <p>
+                      {(comparisonResult?.gap_analysis?.coverage_percentage === 100 || extractMissingRequirements().length === 0)
+                        ? "Perfect coverage detected! All BRD requirements are properly addressed by user stories."
+                        : "All critical requirements appear to be covered. You can now generate intelligent test recommendations."
+                      }
+                    </p>
                     <button 
                       onClick={generateTestRecommendations}
                       disabled={testLoading}
                       className="primary-button test-recommendations-btn"
                     >
-                      {testLoading ? 'Generating Test Recommendations...' : 'Show Testing Type Recommendations'}
+                      {testLoading ? 'Generating Test Recommendations...' : 'Generate Test Recommendations'}
                     </button>
                   </div>
                 )
