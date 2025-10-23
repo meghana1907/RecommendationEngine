@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Recommendation Engine - Dual Upload</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .animate-spin {
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen p-6">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Test Recommendation Engine</h1>
+            <p class="text-gray-600 mb-8">Upload BRD and User Stories to generate comprehensive test recommendations</p>
+
+            <!-- Upload Section -->
+            <div class="grid md:grid-cols-2 gap-6 mb-8">
+                <!-- BRD Upload -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex items-center mb-4">
+                        <h3 class="text-lg font-semibold">Business Requirements Document</h3>
+                        <span id="brd-status" class="hidden ml-2 text-green-500">✓</span>
+                    </div>
+                    
+                    <div id="brd-upload-area" class="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center">
+                        <div class="mb-2">📄</div>
+                        <label class="cursor-pointer text-blue-600 hover:text-blue-700">
+                            Choose BRD File
+                            <input id="brd-file" type="file" class="hidden" accept=".txt,.doc,.docx,.pdf">
+                        </label>
+                        <div class="mt-2">
+                            <textarea id="brd-text" placeholder="Or paste BRD content here..." 
+                                    class="w-full h-20 p-2 border border-gray-300 rounded text-sm resize-none"></textarea>
+                            <button id="brd-text-upload" class="mt-2 px-4 py-1 bg-blue-500 text-white rounded text-sm hover:bg-blue-600">
+                                Upload Text
+                            </button>
+                        </div>
+                    </div>
+                    <div id="brd-result" class="hidden mt-4 bg-green-50 border border-green-200 rounded-lg p-3">
+                        <span class="text-green-700">✓ BRD uploaded successfully</span>
+                    </div>
+                </div>
+
+                <!-- User Stories Upload -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex items-center mb-4">
+                        <h3 class="text-lg font-semibold">User Stories</h3>
+                        <span id="us-status" class="hidden ml-2 text-green-500">✓</span>
+                    </div>
+                    
+                    <div id="us-upload-area" class="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center">
+                        <div class="mb-2">📋</div>
+                        <label class="cursor-pointer text-blue-600 hover:text-blue-700">
+                            Choose User Stories File
+                            <input id="us-file" type="file" class="hidden" accept=".txt,.doc,.docx,.pdf">
+                        </label>
+                        <div class="mt-2">
+                            <textarea id="us-text" placeholder="Or paste User Stories content here..." 
+                                    class="w-full h-20 p-2 border border-gray-300 rounded text-sm resize-none"></textarea>
+                            <button id="us-text-upload" class="mt-2 px-4 py-1 bg-blue-500 text-white rounded text-sm hover:bg-blue-600">
+                                Upload Text
+                            </button>
+                        </div>
+                    </div>
+                    <div id="us-result" class="hidden mt-4 bg-green-50 border border-green-200 rounded-lg p-3">
+                        <span class="text-green-700">✓ User Stories uploaded successfully</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Generate Button -->
+            <div class="text-center mb-8">
+                <button id="generate-btn" disabled 
+                        class="px-8 py-4 rounded-lg font-semibold text-lg transition-all bg-gray-300 text-gray-500 cursor-not-allowed">
+                    <span id="generate-text">Upload Both Documents First</span>
+                </button>
+            </div>
+
+            <!-- Results -->
+            <div id="results-section" class="hidden bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-semibold mb-4">Test Recommendations</h3>
+                <div id="results-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:8000/api';
+        let brdDocumentId = null;
+        let userStoriesDocumentId = null;
+
+        // File upload handlers
+        document.getElementById('brd-file').addEventListener('change', async (e) => {
+            if (e.target.files[0]) {
+                await uploadFile(e.target.files[0], 'brd');
+            }
+        });
+
+        document.getElementById('us-file').addEventListener('change', async (e) => {
+            if (e.target.files[0]) {
+                await uploadFile(e.target.files[0], 'us');
+            }
+        });
+
+        // Text upload handlers
+        document.getElementById('brd-text-upload').addEventListener('click', async () => {
+            const content = document.getElementById('brd-text').value;
+            if (content.trim().length < 100) {
+                alert('Content must be at least 100 characters');
+                return;
+            }
+            await uploadText(content, 'brd');
+        });
+
+        document.getElementById('us-text-upload').addEventListener('click', async () => {
+            const content = document.getElementById('us-text').value;
+            if (content.trim().length < 100) {
+                alert('Content must be at least 100 characters');
+                return;
+            }
+            await uploadText(content, 'us');
+        });
+
+        // Generate tests handler
+        document.getElementById('generate-btn').addEventListener('click', generateTests);
+
+        async function uploadFile(file, type) {
+            const formData = new FormData();
+            formData.append('file', file);
+
+            try {
+                const response = await fetch(`${API_BASE}/documents/upload`, {
+                    method: 'POST',
+                    body: formData,
+                });
+
+                if (!response.ok) throw new Error('Upload failed');
+
+                const result = await response.json();
+                handleUploadSuccess(result, type, file.name);
+            } catch (error) {
+                alert(`Failed to upload ${type}: ${error.message}`);
+            }
+        }
+
+        async function uploadText(content, type) {
+            try {
+                const response = await fetch(`${API_BASE}/documents/upload-text`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ content }),
+                });
+
+                if (!response.ok) throw new Error('Upload failed');
+
+                const result = await response.json();
+                handleUploadSuccess(result, type, 'text_content.txt');
+                
+                // Clear text area
+                document.getElementById(`${type === 'brd' ? 'brd' : 'us'}-text`).value = '';
+            } catch (error) {
+                alert(`Failed to upload ${type}: ${error.message}`);
+            }
+        }
+
+        function handleUploadSuccess(result, type, filename) {
+            if (type === 'brd') {
+                brdDocumentId = result.document_id;
+                document.getElementById('brd-status').classList.remove('hidden');
+                document.getElementById('brd-result').classList.remove('hidden');
+            } else {
+                userStoriesDocumentId = result.document_id;
+                document.getElementById('us-status').classList.remove('hidden');
+                document.getElementById('us-result').classList.remove('hidden');
+            }
+
+            updateGenerateButton();
+            console.log(`${type} uploaded:`, result);
+        }
+
+        function updateGenerateButton() {
+            const generateBtn = document.getElementById('generate-btn');
+            const generateText = document.getElementById('generate-text');
+
+            if (brdDocumentId && userStoriesDocumentId) {
+                generateBtn.disabled = false;
+                generateBtn.className = 'px-8 py-4 rounded-lg font-semibold text-lg transition-all bg-blue-600 text-white hover:bg-blue-700 shadow-lg cursor-pointer';
+                generateText.innerHTML = '🧪 Generate Test Recommendations';
+            }
+        }
+
+        async function generateTests() {
+            if (!brdDocumentId || !userStoriesDocumentId) {
+                alert('Please upload both documents first');
+                return;
+            }
+
+            const generateBtn = document.getElementById('generate-btn');
+            const generateText = document.getElementById('generate-text');
+            
+            // Show loading state
+            generateBtn.disabled = true;
+            generateText.innerHTML = '<div class="inline-block w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>Generating Tests...';
+
+            try {
+                const response = await fetch(`${API_BASE}/tests/generate`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        brd_document_id: brdDocumentId,
+                        user_stories_document_id: userStoriesDocumentId,
+                    }),
+                });
+
+                if (!response.ok) throw new Error('Test generation failed');
+
+                const result = await response.json();
+                displayResults(result);
+                
+                alert(`Success! Generated ${result.processing_details.total_tests} test recommendations`);
+            } catch (error) {
+                alert(`Failed to generate tests: ${error.message}`);
+            } finally {
+                // Reset button
+                generateBtn.disabled = false;
+                generateText.innerHTML = '🧪 Generate Test Recommendations';
+            }
+        }
+
+        function displayResults(result) {
+            const resultsSection = document.getElementById('results-section');
+            const resultsContent = document.getElementById('results-content');
+
+            // Show summary stats
+            let html = `
+                <div class="grid md:grid-cols-2 gap-4 mb-6">
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <div class="text-2xl font-bold text-blue-600">${result.processing_details.total_tests}</div>
+                        <div class="text-blue-600">Total Tests</div>
+                    </div>
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <div class="text-2xl font-bold text-green-600">${result.processing_details.clusters_generated}</div>
+                        <div class="text-green-600">Feature Clusters</div>
+                    </div>
+                </div>
+                
+                <div class="space-y-4">
+            `;
+
+            // Show clusters and tests
+            result.recommendations.forEach((cluster, index) => {
+                html += `
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <h4 class="font-semibold text-lg mb-2">
+                            Cluster ${cluster.cluster_id}: ${cluster.feature_name}
+                        </h4>
+                        <p class="text-gray-600 mb-3">${cluster.tests.length} tests recommended</p>
+                        
+                        <div class="space-y-2">
+                `;
+
+                cluster.tests.slice(0, 5).forEach(test => {
+                    const priorityColor = test.priority === 'critical' ? 'bg-red-100 text-red-700' :
+                                         test.priority === 'high' ? 'bg-orange-100 text-orange-700' :
+                                         'bg-yellow-100 text-yellow-700';
+                    
+                    html += `
+                        <div class="bg-gray-50 p-3 rounded border-l-4 border-blue-500">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <div class="font-medium">${test.test_name}</div>
+                                    <div class="text-sm text-gray-600">${test.test_description}</div>
+                                </div>
+                                <div class="flex space-x-2">
+                                    <span class="px-2 py-1 rounded text-xs ${priorityColor}">
+                                        ${test.priority}
+                                    </span>
+                                    <span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs">
+                                        ${test.test_category}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                if (cluster.tests.length > 5) {
+                    html += `
+                        <div class="text-center text-gray-500 text-sm py-2">
+                            ... and ${cluster.tests.length - 5} more tests
+                        </div>
+                    `;
+                }
+
+                html += `
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += '</div>';
+            
+            resultsContent.innerHTML = html;
+            resultsSection.classList.remove('hidden');
+            
+            // Scroll to results
+            resultsSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
